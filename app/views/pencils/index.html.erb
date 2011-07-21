@@ -1,0 +1,23 @@
+<h1>Listing pencils</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @pencils.each do |pencil| %>
+  <tr>
+    <td><%= pencil.name %></td>
+    <td><%= link_to 'Show', pencil %></td>
+    <td><%= link_to 'Edit', edit_pencil_path(pencil) %></td>
+    <td><%= link_to 'Destroy', pencil, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Pencil', new_pencil_path %>

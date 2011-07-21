@@ -1,0 +1,21 @@
+<h1>Matt's store</h1>
+<table>
+  <% @pencils.each do |pencil| %>
+    <tr>
+      <td><%= pencil.name %></td>
+      <td><%= link_to 'Purchase this item', new_purchase_path(:name => pencil.name, :type => "pencil") %></td>
+    <tr>
+  <% end %>
+  <% @books.each do |book| %>
+    <tr>
+      <td><%= book.name %></td>
+      <td><%= link_to 'Purchase this item', new_purchase_path(:name => book.name, :type => "book") %></td>
+    <tr>
+  <% end %>
+  <% @memberships.each do |membership| %>
+    <tr>
+      <td><%= membership.name %></td>
+      <td><%= link_to 'Purchase this item', new_purchase_path(:name => membership.name, :type => "membership") %></td>
+    <tr>
+  <% end %>
+</table>

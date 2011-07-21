@@ -1,0 +1,1637 @@
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (1.5ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("schema_migrations")
+  [1m[36mSQL (1.5ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.1ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations"
+Migrating to CreatePencils (20110721095132)
+  [1m[36mSQL (0.6ms)[0m  [1mCREATE TABLE "pencils" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20110721095132')
+Migrating to CreateBooks (20110721095148)
+  [1m[36mSQL (0.4ms)[0m  [1mCREATE TABLE "books" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20110721095148')
+Migrating to CreateMemberships (20110721095202)
+  [1m[36mSQL (0.4ms)[0m  [1mCREATE TABLE "memberships" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20110721095202')
+Migrating to CreatePurchases (20110721095214)
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+Migrating to CreatePencils (20110721095132)
+Migrating to CreateBooks (20110721095148)
+Migrating to CreateMemberships (20110721095202)
+Migrating to CreatePurchases (20110721095324)
+  [1m[35mSQL (0.1ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (0.5ms)[0m  [1mCREATE TABLE "purchases" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "item_name" varchar(255), "email" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20110721095324')
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations"
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("books")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("memberships")[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("pencils")
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("purchases")[0m
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from service at /usr/local/lib/ruby/1.9.1/webrick/httpserver.rb:111)
+
+
+Started GET "/" for 127.0.0.1 at 2011-07-21 05:55:41 -0400
+  Processing by HomeController#index as HTML
+  [1m[36mPencil Load (0.5ms)[0m  [1mSELECT "pencils".* FROM "pencils"[0m
+  [1m[35mBook Load (0.2ms)[0m  SELECT "books".* FROM "books"
+  [1m[36mMembership Load (0.2ms)[0m  [1mSELECT "memberships".* FROM "memberships"[0m
+Rendered home/index.html.erb within layouts/application (5.6ms)
+Completed 200 OK in 112ms (Views: 13.2ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/books" for 127.0.0.1 at 2011-07-21 05:55:44 -0400
+  Processing by BooksController#index as HTML
+  [1m[35mBook Load (0.2ms)[0m  SELECT "books".* FROM "books"
+Rendered books/index.html.erb within layouts/application (3.9ms)
+Completed 200 OK in 21ms (Views: 10.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/books/new" for 127.0.0.1 at 2011-07-21 05:55:45 -0400
+  Processing by BooksController#new as HTML
+Rendered books/_form.html.erb (14.8ms)
+Rendered books/new.html.erb within layouts/application (20.5ms)
+Completed 200 OK in 40ms (Views: 26.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/books" for 127.0.0.1 at 2011-07-21 05:55:50 -0400
+  Processing by BooksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"47eTltumZWMVhVywhXoEin0pbVvgVEPl5ZdbHMdNkDU=", "book"=>{"name"=>"Lord of the Rings"}, "commit"=>"Create Book"}
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mAREL (0.4ms)[0m  INSERT INTO "books" ("name", "created_at", "updated_at") VALUES ('Lord of the Rings', '2011-07-21 09:55:50.856912', '2011-07-21 09:55:50.856912')
+Redirected to http://localhost:3000/books/1
+Completed 302 Found in 50ms
+
+
+Started GET "/books/1" for 127.0.0.1 at 2011-07-21 05:55:50 -0400
+  Processing by BooksController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT "books".* FROM "books" WHERE "books"."id" = 1 LIMIT 1[0m
+Rendered books/show.html.erb within layouts/application (12.7ms)
+Completed 200 OK in 33ms (Views: 19.2ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/books" for 127.0.0.1 at 2011-07-21 05:55:53 -0400
+  Processing by BooksController#index as HTML
+  [1m[35mBook Load (0.4ms)[0m  SELECT "books".* FROM "books"
+Rendered books/index.html.erb within layouts/application (15.0ms)
+Completed 200 OK in 32ms (Views: 21.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/books/new" for 127.0.0.1 at 2011-07-21 05:55:54 -0400
+  Processing by BooksController#new as HTML
+Rendered books/_form.html.erb (47.4ms)
+Rendered books/new.html.erb within layouts/application (52.5ms)
+Completed 200 OK in 71ms (Views: 58.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/books" for 127.0.0.1 at 2011-07-21 05:56:01 -0400
+  Processing by BooksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"47eTltumZWMVhVywhXoEin0pbVvgVEPl5ZdbHMdNkDU=", "book"=>{"name"=>"Jurassic Park"}, "commit"=>"Create Book"}
+  [1m[36mAREL (0.4ms)[0m  [1mINSERT INTO "books" ("name", "created_at", "updated_at") VALUES ('Jurassic Park', '2011-07-21 09:56:01.255827', '2011-07-21 09:56:01.255827')[0m
+Redirected to http://localhost:3000/books/2
+Completed 302 Found in 30ms
+
+
+Started GET "/books/2" for 127.0.0.1 at 2011-07-21 05:56:01 -0400
+  Processing by BooksController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mBook Load (0.2ms)[0m  SELECT "books".* FROM "books" WHERE "books"."id" = 2 LIMIT 1
+Rendered books/show.html.erb within layouts/application (11.9ms)
+Completed 200 OK in 31ms (Views: 18.1ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/books" for 127.0.0.1 at 2011-07-21 05:56:02 -0400
+  Processing by BooksController#index as HTML
+  [1m[36mBook Load (0.5ms)[0m  [1mSELECT "books".* FROM "books"[0m
+Rendered books/index.html.erb within layouts/application (16.7ms)
+Completed 200 OK in 71ms (Views: 22.7ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-07-21 05:56:05 -0400
+  Processing by HomeController#index as HTML
+  [1m[35mPencil Load (0.4ms)[0m  SELECT "pencils".* FROM "pencils"
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT "books".* FROM "books"[0m
+  [1m[35mMembership Load (0.2ms)[0m  SELECT "memberships".* FROM "memberships"
+Rendered home/index.html.erb within layouts/application (12.9ms)
+Completed 200 OK in 50ms (Views: 19.0ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/pencils" for 127.0.0.1 at 2011-07-21 05:56:06 -0400
+  Processing by PencilsController#index as HTML
+  [1m[36mPencil Load (0.4ms)[0m  [1mSELECT "pencils".* FROM "pencils"[0m
+Rendered pencils/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 21ms (Views: 10.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/pencils/new" for 127.0.0.1 at 2011-07-21 05:56:08 -0400
+  Processing by PencilsController#new as HTML
+Rendered pencils/_form.html.erb (9.9ms)
+Rendered pencils/new.html.erb within layouts/application (15.3ms)
+Completed 200 OK in 34ms (Views: 21.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/pencils" for 127.0.0.1 at 2011-07-21 05:56:15 -0400
+  Processing by PencilsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"47eTltumZWMVhVywhXoEin0pbVvgVEPl5ZdbHMdNkDU=", "pencil"=>{"name"=>"Blue Pencil"}, "commit"=>"Create Pencil"}
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO "pencils" ("name", "created_at", "updated_at") VALUES ('Blue Pencil', '2011-07-21 09:56:15.824426', '2011-07-21 09:56:15.824426')
+Redirected to http://localhost:3000/pencils/1
+Completed 302 Found in 29ms
+
+
+Started GET "/pencils/1" for 127.0.0.1 at 2011-07-21 05:56:15 -0400
+  Processing by PencilsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPencil Load (0.2ms)[0m  [1mSELECT "pencils".* FROM "pencils" WHERE "pencils"."id" = 1 LIMIT 1[0m
+Rendered pencils/show.html.erb within layouts/application (11.9ms)
+Completed 200 OK in 31ms (Views: 18.3ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/pencils" for 127.0.0.1 at 2011-07-21 05:56:17 -0400
+  Processing by PencilsController#index as HTML
+  [1m[35mPencil Load (0.4ms)[0m  SELECT "pencils".* FROM "pencils"
+Rendered pencils/index.html.erb within layouts/application (14.9ms)
+Completed 200 OK in 32ms (Views: 21.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/pencils/new" for 127.0.0.1 at 2011-07-21 05:56:18 -0400
+  Processing by PencilsController#new as HTML
+Rendered pencils/_form.html.erb (10.0ms)
+Rendered pencils/new.html.erb within layouts/application (15.3ms)
+Completed 200 OK in 34ms (Views: 21.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/pencils" for 127.0.0.1 at 2011-07-21 05:56:23 -0400
+  Processing by PencilsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"47eTltumZWMVhVywhXoEin0pbVvgVEPl5ZdbHMdNkDU=", "pencil"=>{"name"=>"Red Pencil"}, "commit"=>"Create Pencil"}
+  [1m[36mAREL (0.4ms)[0m  [1mINSERT INTO "pencils" ("name", "created_at", "updated_at") VALUES ('Red Pencil', '2011-07-21 09:56:23.526954', '2011-07-21 09:56:23.526954')[0m
+Redirected to http://localhost:3000/pencils/2
+Completed 302 Found in 29ms
+
+
+Started GET "/pencils/2" for 127.0.0.1 at 2011-07-21 05:56:23 -0400
+  Processing by PencilsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mPencil Load (0.2ms)[0m  SELECT "pencils".* FROM "pencils" WHERE "pencils"."id" = 2 LIMIT 1
+Rendered pencils/show.html.erb within layouts/application (11.8ms)
+Completed 200 OK in 31ms (Views: 17.9ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/pencils" for 127.0.0.1 at 2011-07-21 05:56:24 -0400
+  Processing by PencilsController#index as HTML
+  [1m[36mPencil Load (0.5ms)[0m  [1mSELECT "pencils".* FROM "pencils"[0m
+Rendered pencils/index.html.erb within layouts/application (16.5ms)
+Completed 200 OK in 33ms (Views: 22.8ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/pencils/new" for 127.0.0.1 at 2011-07-21 05:56:26 -0400
+  Processing by PencilsController#new as HTML
+Rendered pencils/_form.html.erb (9.9ms)
+Rendered pencils/new.html.erb within layouts/application (15.2ms)
+Completed 200 OK in 34ms (Views: 21.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/pencils" for 127.0.0.1 at 2011-07-21 05:56:34 -0400
+  Processing by PencilsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"47eTltumZWMVhVywhXoEin0pbVvgVEPl5ZdbHMdNkDU=", "pencil"=>{"name"=>"Graphite Pencil"}, "commit"=>"Create Pencil"}
+  [1m[35mAREL (0.4ms)[0m  INSERT INTO "pencils" ("name", "created_at", "updated_at") VALUES ('Graphite Pencil', '2011-07-21 09:56:34.097424', '2011-07-21 09:56:34.097424')
+Redirected to http://localhost:3000/pencils/3
+Completed 302 Found in 29ms
+
+
+Started GET "/pencils/3" for 127.0.0.1 at 2011-07-21 05:56:34 -0400
+  Processing by PencilsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mPencil Load (0.2ms)[0m  [1mSELECT "pencils".* FROM "pencils" WHERE "pencils"."id" = 3 LIMIT 1[0m
+Rendered pencils/show.html.erb within layouts/application (48.6ms)
+Completed 200 OK in 68ms (Views: 54.9ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/pencils" for 127.0.0.1 at 2011-07-21 05:56:35 -0400
+  Processing by PencilsController#index as HTML
+  [1m[35mPencil Load (0.6ms)[0m  SELECT "pencils".* FROM "pencils"
+Rendered pencils/index.html.erb within layouts/application (18.6ms)
+Completed 200 OK in 36ms (Views: 24.8ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-07-21 05:56:39 -0400
+  Processing by HomeController#index as HTML
+  [1m[36mPencil Load (0.5ms)[0m  [1mSELECT "pencils".* FROM "pencils"[0m
+  [1m[35mBook Load (0.2ms)[0m  SELECT "books".* FROM "books"
+  [1m[36mMembership Load (0.2ms)[0m  [1mSELECT "memberships".* FROM "memberships"[0m
+Rendered home/index.html.erb within layouts/application (21.9ms)
+Completed 200 OK in 57ms (Views: 28.0ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/memberships" for 127.0.0.1 at 2011-07-21 05:56:41 -0400
+  Processing by MembershipsController#index as HTML
+  [1m[35mMembership Load (0.4ms)[0m  SELECT "memberships".* FROM "memberships"
+Rendered memberships/index.html.erb within layouts/application (4.1ms)
+Completed 200 OK in 22ms (Views: 10.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/memberships/new" for 127.0.0.1 at 2011-07-21 05:56:42 -0400
+  Processing by MembershipsController#new as HTML
+Rendered memberships/_form.html.erb (10.3ms)
+Rendered memberships/new.html.erb within layouts/application (15.8ms)
+Completed 200 OK in 35ms (Views: 22.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/memberships" for 127.0.0.1 at 2011-07-21 05:56:48 -0400
+  Processing by MembershipsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"47eTltumZWMVhVywhXoEin0pbVvgVEPl5ZdbHMdNkDU=", "membership"=>{"name"=>"Gold Membership"}, "commit"=>"Create Membership"}
+  [1m[36mAREL (0.4ms)[0m  [1mINSERT INTO "memberships" ("name", "created_at", "updated_at") VALUES ('Gold Membership', '2011-07-21 09:56:48.455940', '2011-07-21 09:56:48.455940')[0m
+Redirected to http://localhost:3000/memberships/1
+Completed 302 Found in 29ms
+
+
+Started GET "/memberships/1" for 127.0.0.1 at 2011-07-21 05:56:48 -0400
+  Processing by MembershipsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mMembership Load (0.2ms)[0m  SELECT "memberships".* FROM "memberships" WHERE "memberships"."id" = 1 LIMIT 1
+Rendered memberships/show.html.erb within layouts/application (12.1ms)
+Completed 200 OK in 32ms (Views: 18.5ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/memberships" for 127.0.0.1 at 2011-07-21 05:56:50 -0400
+  Processing by MembershipsController#index as HTML
+  [1m[36mMembership Load (0.4ms)[0m  [1mSELECT "memberships".* FROM "memberships"[0m
+Rendered memberships/index.html.erb within layouts/application (14.5ms)
+Completed 200 OK in 31ms (Views: 20.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/memberships/new" for 127.0.0.1 at 2011-07-21 05:56:51 -0400
+  Processing by MembershipsController#new as HTML
+Rendered memberships/_form.html.erb (9.9ms)
+Rendered memberships/new.html.erb within layouts/application (15.2ms)
+Completed 200 OK in 70ms (Views: 21.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/memberships" for 127.0.0.1 at 2011-07-21 05:56:58 -0400
+  Processing by MembershipsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"47eTltumZWMVhVywhXoEin0pbVvgVEPl5ZdbHMdNkDU=", "membership"=>{"name"=>"Silver Membership"}, "commit"=>"Create Membership"}
+  [1m[35mAREL (0.4ms)[0m  INSERT INTO "memberships" ("name", "created_at", "updated_at") VALUES ('Silver Membership', '2011-07-21 09:56:58.718339', '2011-07-21 09:56:58.718339')
+Redirected to http://localhost:3000/memberships/2
+Completed 302 Found in 29ms
+
+
+Started GET "/memberships/2" for 127.0.0.1 at 2011-07-21 05:56:58 -0400
+  Processing by MembershipsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mMembership Load (0.2ms)[0m  [1mSELECT "memberships".* FROM "memberships" WHERE "memberships"."id" = 2 LIMIT 1[0m
+Rendered memberships/show.html.erb within layouts/application (12.3ms)
+Completed 200 OK in 32ms (Views: 18.7ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-07-21 05:57:03 -0400
+  Processing by HomeController#index as HTML
+  [1m[35mPencil Load (0.5ms)[0m  SELECT "pencils".* FROM "pencils"
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT "books".* FROM "books"[0m
+  [1m[35mMembership Load (0.3ms)[0m  SELECT "memberships".* FROM "memberships"
+Rendered home/index.html.erb within layouts/application (30.0ms)
+Completed 200 OK in 67ms (Views: 36.2ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/purchases/new" for 127.0.0.1 at 2011-07-21 05:57:08 -0400
+  Processing by PurchasesController#new as HTML
+Rendered purchases/_form.html.erb (12.8ms)
+Rendered purchases/new.html.erb within layouts/application (18.2ms)
+Completed 200 OK in 39ms (Views: 24.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-07-21 05:59:28 -0400
+  Processing by HomeController#index as HTML
+  [1m[36mPencil Load (0.5ms)[0m  [1mSELECT "pencils".* FROM "pencils"[0m
+  [1m[35mBook Load (0.3ms)[0m  SELECT "books".* FROM "books"
+  [1m[36mMembership Load (0.3ms)[0m  [1mSELECT "memberships".* FROM "memberships"[0m
+ERROR: compiling _app_views_home_index_html_erb__3233419651374648239_2176847140_355899949731811942 RAISED /Users/matthewkucera/Desktop/projects/interview_assignment/app/views/home/index.html.erb:6: syntax error, unexpected tASSOC, expecting '}'
+...e', new_purchase_path{:param => pencil} );@output_buffer.saf...
+...                               ^
+Function body:           def _app_views_home_index_html_erb__3233419651374648239_2176847140_355899949731811942(local_assigns)
+            _old_virtual_path, @_virtual_path = @_virtual_path, "home/index";_old_output_buffer = @output_buffer;;@output_buffer = ActionView::OutputBuffer.new;@output_buffer.safe_concat('<h1>Matt\'s store</h1>
+<table>
+');@output_buffer.append_if_string=    @pencils.each do |pencil| 
+@output_buffer.safe_concat('    <tr>
+      <td>');@output_buffer.append= ( pencil.name );@output_buffer.safe_concat('</td>
+      <td>');@output_buffer.append= ( link_to 'New Purchase', new_purchase_path{:param => pencil} );@output_buffer.safe_concat('</td>
+    <tr>
+');   end 
+@output_buffer.append_if_string=    @books.each do |book| 
+@output_buffer.safe_concat('    <tr>
+      <td>');@output_buffer.append= ( book.name );@output_buffer.safe_concat('</td>
+    <tr>
+');   end 
+@output_buffer.append_if_string=    @memberships.each do |membership| 
+@output_buffer.safe_concat('    <tr>
+      <td>');@output_buffer.append= ( membership.name );@output_buffer.safe_concat('</td>
+    <tr>
+');   end 
+@output_buffer.safe_concat('</table>
+
+<p>');@output_buffer.append= ( link_to "Add More Books", books_path );@output_buffer.safe_concat('</p>
+<p>');@output_buffer.append= ( link_to "Add More Pencils", pencils_path );@output_buffer.safe_concat('</p>
+<p>');@output_buffer.append= ( link_to "Add More Memberships", memberships_path );@output_buffer.safe_concat('</p>
+<p>');@output_buffer.append= ( link_to "Add More Purchases", purchases_path );@output_buffer.safe_concat('</p>');@output_buffer.to_s
+          ensure
+            @_virtual_path, @output_buffer = _old_virtual_path, _old_output_buffer
+          end
+Backtrace: /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_view/template.rb:258:in `module_eval'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_view/template.rb:258:in `compile'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_view/template.rb:134:in `block in render'
+/usr/local/lib/ruby/gems/1.9.1/gems/activesupport-3.0.9/lib/active_support/notifications.rb:54:in `instrument'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_view/template.rb:127:in `render'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_view/render/rendering.rb:59:in `block in _render_template'
+/usr/local/lib/ruby/gems/1.9.1/gems/activesupport-3.0.9/lib/active_support/notifications.rb:52:in `block in instrument'
+/usr/local/lib/ruby/gems/1.9.1/gems/activesupport-3.0.9/lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+/usr/local/lib/ruby/gems/1.9.1/gems/activesupport-3.0.9/lib/active_support/notifications.rb:52:in `instrument'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_view/render/rendering.rb:56:in `_render_template'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_view/render/rendering.rb:26:in `render'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/abstract_controller/rendering.rb:115:in `_render_template'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/abstract_controller/rendering.rb:109:in `render_to_body'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_controller/metal/renderers.rb:47:in `render_to_body'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_controller/metal/compatibility.rb:55:in `render_to_body'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/abstract_controller/rendering.rb:102:in `render_to_string'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/abstract_controller/rendering.rb:93:in `render'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_controller/metal/rendering.rb:17:in `render'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_controller/metal/instrumentation.rb:40:in `block (2 levels) in render'
+/usr/local/lib/ruby/gems/1.9.1/gems/activesupport-3.0.9/lib/active_support/core_ext/benchmark.rb:5:in `block in ms'
+/usr/local/lib/ruby/1.9.1/benchmark.rb:309:in `realtime'
+/usr/local/lib/ruby/gems/1.9.1/gems/activesupport-3.0.9/lib/active_support/core_ext/benchmark.rb:5:in `ms'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_controller/metal/instrumentation.rb:40:in `block in render'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_controller/metal/instrumentation.rb:78:in `cleanup_view_runtime'
+/usr/local/lib/ruby/gems/1.9.1/gems/activerecord-3.0.9/lib/active_record/railties/controller_runtime.rb:15:in `cleanup_view_runtime'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_controller/metal/instrumentation.rb:39:in `render'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_controller/metal/implicit_render.rb:5:in `send_action'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/abstract_controller/base.rb:150:in `process_action'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_controller/metal/rendering.rb:11:in `process_action'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/abstract_controller/callbacks.rb:18:in `block in process_action'
+/usr/local/lib/ruby/gems/1.9.1/gems/activesupport-3.0.9/lib/active_support/callbacks.rb:436:in `_run__3098503167803739812__process_action__1449319330318644202__callbacks'
+/usr/local/lib/ruby/gems/1.9.1/gems/activesupport-3.0.9/lib/active_support/callbacks.rb:410:in `_run_process_action_callbacks'
+/usr/local/lib/ruby/gems/1.9.1/gems/activesupport-3.0.9/lib/active_support/callbacks.rb:94:in `run_callbacks'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/abstract_controller/callbacks.rb:17:in `process_action'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_controller/metal/instrumentation.rb:30:in `block in process_action'
+/usr/local/lib/ruby/gems/1.9.1/gems/activesupport-3.0.9/lib/active_support/notifications.rb:52:in `block in instrument'
+/usr/local/lib/ruby/gems/1.9.1/gems/activesupport-3.0.9/lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+/usr/local/lib/ruby/gems/1.9.1/gems/activesupport-3.0.9/lib/active_support/notifications.rb:52:in `instrument'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_controller/metal/instrumentation.rb:29:in `process_action'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_controller/metal/rescue.rb:17:in `process_action'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/abstract_controller/base.rb:119:in `process'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/abstract_controller/rendering.rb:41:in `process'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_controller/metal.rb:138:in `dispatch'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_controller/metal.rb:178:in `block in action'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_dispatch/routing/route_set.rb:62:in `call'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_dispatch/routing/route_set.rb:62:in `dispatch'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_dispatch/routing/route_set.rb:27:in `call'
+/usr/local/lib/ruby/gems/1.9.1/gems/rack-mount-0.6.14/lib/rack/mount/route_set.rb:148:in `block in call'
+/usr/local/lib/ruby/gems/1.9.1/gems/rack-mount-0.6.14/lib/rack/mount/code_generation.rb:93:in `block in recognize'
+/usr/local/lib/ruby/gems/1.9.1/gems/rack-mount-0.6.14/lib/rack/mount/code_generation.rb:68:in `optimized_each'
+/usr/local/lib/ruby/gems/1.9.1/gems/rack-mount-0.6.14/lib/rack/mount/code_generation.rb:92:in `recognize'
+/usr/local/lib/ruby/gems/1.9.1/gems/rack-mount-0.6.14/lib/rack/mount/route_set.rb:139:in `call'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_dispatch/routing/route_set.rb:493:in `call'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_dispatch/middleware/head.rb:14:in `call'
+/usr/local/lib/ruby/gems/1.9.1/gems/rack-1.2.3/lib/rack/methodoverride.rb:24:in `call'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_dispatch/middleware/flash.rb:182:in `call'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_dispatch/middleware/session/abstract_store.rb:149:in `call'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_dispatch/middleware/cookies.rb:302:in `call'
+/usr/local/lib/ruby/gems/1.9.1/gems/activerecord-3.0.9/lib/active_record/query_cache.rb:32:in `block in call'
+/usr/local/lib/ruby/gems/1.9.1/gems/activerecord-3.0.9/lib/active_record/connection_adapters/abstract/query_cache.rb:28:in `cache'
+/usr/local/lib/ruby/gems/1.9.1/gems/activerecord-3.0.9/lib/active_record/query_cache.rb:12:in `cache'
+/usr/local/lib/ruby/gems/1.9.1/gems/activerecord-3.0.9/lib/active_record/query_cache.rb:31:in `call'
+/usr/local/lib/ruby/gems/1.9.1/gems/activerecord-3.0.9/lib/active_record/connection_adapters/abstract/connection_pool.rb:354:in `call'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_dispatch/middleware/callbacks.rb:46:in `block in call'
+/usr/local/lib/ruby/gems/1.9.1/gems/activesupport-3.0.9/lib/active_support/callbacks.rb:416:in `_run_call_callbacks'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_dispatch/middleware/callbacks.rb:44:in `call'
+/usr/local/lib/ruby/gems/1.9.1/gems/rack-1.2.3/lib/rack/sendfile.rb:107:in `call'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_dispatch/middleware/remote_ip.rb:48:in `call'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_dispatch/middleware/show_exceptions.rb:47:in `call'
+/usr/local/lib/ruby/gems/1.9.1/gems/railties-3.0.9/lib/rails/rack/logger.rb:13:in `call'
+/usr/local/lib/ruby/gems/1.9.1/gems/rack-1.2.3/lib/rack/runtime.rb:17:in `call'
+/usr/local/lib/ruby/gems/1.9.1/gems/activesupport-3.0.9/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+/usr/local/lib/ruby/gems/1.9.1/gems/rack-1.2.3/lib/rack/lock.rb:11:in `block in call'
+<internal:prelude>:10:in `synchronize'
+/usr/local/lib/ruby/gems/1.9.1/gems/rack-1.2.3/lib/rack/lock.rb:11:in `call'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_dispatch/middleware/static.rb:30:in `call'
+/usr/local/lib/ruby/gems/1.9.1/gems/railties-3.0.9/lib/rails/application.rb:168:in `call'
+/usr/local/lib/ruby/gems/1.9.1/gems/railties-3.0.9/lib/rails/application.rb:77:in `method_missing'
+/usr/local/lib/ruby/gems/1.9.1/gems/railties-3.0.9/lib/rails/rack/log_tailer.rb:14:in `call'
+/usr/local/lib/ruby/gems/1.9.1/gems/rack-1.2.3/lib/rack/content_length.rb:13:in `call'
+/usr/local/lib/ruby/gems/1.9.1/gems/rack-1.2.3/lib/rack/handler/webrick.rb:52:in `service'
+/usr/local/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+/usr/local/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+/usr/local/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+Rendered home/index.html.erb within layouts/application (22.9ms)
+Completed 500 Internal Server Error in 59ms
+
+ActionView::Template::Error (/Users/matthewkucera/Desktop/projects/interview_assignment/app/views/home/index.html.erb:6: syntax error, unexpected tASSOC, expecting '}'
+...e', new_purchase_path{:param => pencil} );@output_buffer.saf...
+...                               ^):
+    3:   <% @pencils.each do |pencil| %>
+    4:     <tr>
+    5:       <td><%= pencil.name %></td>
+    6:       <td><%= link_to 'New Purchase', new_purchase_path{:param => pencil} %></td>
+    7:     <tr>
+    8:   <% end %>
+    9:   <% @books.each do |book| %>
+  
+
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.2ms)
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (28.4ms)
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (37.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-07-21 06:00:21 -0400
+  Processing by HomeController#index as HTML
+  [1m[35mPencil Load (0.5ms)[0m  SELECT "pencils".* FROM "pencils"
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT "books".* FROM "books"[0m
+  [1m[35mMembership Load (0.3ms)[0m  SELECT "memberships".* FROM "memberships"
+Rendered home/index.html.erb within layouts/application (29.7ms)
+Completed 200 OK in 102ms (Views: 72.2ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-07-21 06:05:20 -0400
+  Processing by HomeController#index as HTML
+  [1m[36mPencil Load (0.5ms)[0m  [1mSELECT "pencils".* FROM "pencils"[0m
+  [1m[35mBook Load (0.2ms)[0m  SELECT "books".* FROM "books"
+  [1m[36mMembership Load (0.3ms)[0m  [1mSELECT "memberships".* FROM "memberships"[0m
+Rendered home/index.html.erb within layouts/application (66.0ms)
+Completed 200 OK in 102ms (Views: 72.1ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/purchases/new?param=Blue+Pencil" for 127.0.0.1 at 2011-07-21 06:05:22 -0400
+  Processing by PurchasesController#new as HTML
+  Parameters: {"param"=>"Blue Pencil"}
+Rendered purchases/_form.html.erb (12.2ms)
+Rendered purchases/new.html.erb within layouts/application (17.3ms)
+Completed 200 OK in 36ms (Views: 23.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/purchases/new?param=Blue+Pencil" for 127.0.0.1 at 2011-07-21 06:06:39 -0400
+  Processing by PurchasesController#new as HTML
+  Parameters: {"param"=>"Blue Pencil"}
+Rendered purchases/_form.html.erb (47.4ms)
+Rendered purchases/new.html.erb within layouts/application (49.8ms)
+Completed 500 Internal Server Error in 68ms
+
+ActionView::Template::Error (undefined method `Blue Pencil' for #<Purchase:0x00000100aaa2e8>):
+    13: 
+    14:   <div class="field">
+    15:     <%= f.label :item_name %><br />
+    16:     <%= f.text_field @item_name %>
+    17:   </div>
+    18:   <div class="field">
+    19:     <%= f.label :email %><br />
+  app/views/purchases/_form.html.erb:16:in `block in _app_views_purchases__form_html_erb__1056072924628784444_2152965240__2860164797266903067'
+  app/views/purchases/_form.html.erb:1:in `_app_views_purchases__form_html_erb__1056072924628784444_2152965240__2860164797266903067'
+  app/views/purchases/new.html.erb:3:in `_app_views_purchases_new_html_erb___1992155988868521680_2152985280_355899949731811942'
+  app/controllers/purchases_controller.rb:29:in `new'
+
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.2ms)
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (6.0ms)
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (14.4ms)
+
+
+Started GET "/purchases/new?param=Blue+Pencil" for 127.0.0.1 at 2011-07-21 06:08:15 -0400
+  Processing by PurchasesController#new as HTML
+  Parameters: {"param"=>"Blue Pencil"}
+Rendered purchases/_form.html.erb (12.1ms)
+Rendered purchases/new.html.erb within layouts/application (17.2ms)
+Completed 200 OK in 36ms (Views: 23.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/purchases/new?param=Blue+Pencil" for 127.0.0.1 at 2011-07-21 06:08:52 -0400
+  Processing by PurchasesController#new as HTML
+  Parameters: {"param"=>"Blue Pencil"}
+ERROR: compiling _app_views_purchases__form_html_erb__1056072924628784444_2177668100__2860164797266903067 RAISED /Users/matthewkucera/Desktop/projects/interview_assignment/app/views/purchases/_form.html.erb:14: syntax error, unexpected tASSOC, expecting ')'
+...t_buffer.append= (:item_name => @item_name);@output_buffer.s...
+...                               ^
+Function body:           def _app_views_purchases__form_html_erb__1056072924628784444_2177668100__2860164797266903067(local_assigns)
+            _old_virtual_path, @_virtual_path = @_virtual_path, "purchases/_form";_old_output_buffer = @output_buffer;form = local_assigns[:form];;@output_buffer = ActionView::OutputBuffer.new;@output_buffer.append=  form_for(@purchase) do |f| @output_buffer.safe_concat('
+');   if @purchase.errors.any? 
+@output_buffer.safe_concat('    <div id="error_explanation">
+      <h2>');@output_buffer.append= ( pluralize(@purchase.errors.count, "error") );@output_buffer.safe_concat(' prohibited this purchase from being saved:</h2>
+
+      <ul>
+');@output_buffer.append_if_string=        @purchase.errors.full_messages.each do |msg| 
+@output_buffer.safe_concat('        <li>');@output_buffer.append= ( msg );@output_buffer.safe_concat('</li>
+');       end 
+@output_buffer.safe_concat('      </ul>
+    </div>
+');   end 
+@output_buffer.safe_concat('  <p>Thank you for your purchase of a ');@output_buffer.append= ( @item_name);@output_buffer.safe_concat('</p>
+  ');@output_buffer.append= (:item_name => @item_name);@output_buffer.safe_concat('
+');@output_buffer.safe_concat('  <div class="field">
+    ');@output_buffer.append= ( f.label :item_name );@output_buffer.safe_concat('<br />
+    ');@output_buffer.append= ( f.text_field :item_name );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('  </div>
+  <div class="field">
+    ');@output_buffer.append= ( f.label :email );@output_buffer.safe_concat('<br />
+    ');@output_buffer.append= ( f.text_field :email );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('  </div>
+  <div class="actions">
+    ');@output_buffer.append= ( f.submit );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('  </div>
+'); end 
+@output_buffer.to_s
+          ensure
+            @_virtual_path, @output_buffer = _old_virtual_path, _old_output_buffer
+          end
+Backtrace: /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_view/template.rb:258:in `module_eval'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_view/template.rb:258:in `compile'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_view/template.rb:134:in `block in render'
+/usr/local/lib/ruby/gems/1.9.1/gems/activesupport-3.0.9/lib/active_support/notifications.rb:54:in `instrument'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_view/template.rb:127:in `render'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_view/render/partials.rb:333:in `render_partial'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_view/render/partials.rb:262:in `block in render'
+/usr/local/lib/ruby/gems/1.9.1/gems/activesupport-3.0.9/lib/active_support/notifications.rb:52:in `block in instrument'
+/usr/local/lib/ruby/gems/1.9.1/gems/activesupport-3.0.9/lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+/usr/local/lib/ruby/gems/1.9.1/gems/activesupport-3.0.9/lib/active_support/notifications.rb:52:in `instrument'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_view/render/partials.rb:260:in `render'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_view/render/partials.rb:378:in `_render_partial'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_view/render/rendering.rb:31:in `render'
+/Users/matthewkucera/Desktop/projects/interview_assignment/app/views/purchases/new.html.erb:3:in `_app_views_purchases_new_html_erb___1992155988868521680_2177680620_355899949731811942'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_view/template.rb:135:in `block in render'
+/usr/local/lib/ruby/gems/1.9.1/gems/activesupport-3.0.9/lib/active_support/notifications.rb:54:in `instrument'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_view/template.rb:127:in `render'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_view/render/rendering.rb:59:in `block in _render_template'
+/usr/local/lib/ruby/gems/1.9.1/gems/activesupport-3.0.9/lib/active_support/notifications.rb:52:in `block in instrument'
+/usr/local/lib/ruby/gems/1.9.1/gems/activesupport-3.0.9/lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+/usr/local/lib/ruby/gems/1.9.1/gems/activesupport-3.0.9/lib/active_support/notifications.rb:52:in `instrument'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_view/render/rendering.rb:56:in `_render_template'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_view/render/rendering.rb:26:in `render'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/abstract_controller/rendering.rb:115:in `_render_template'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/abstract_controller/rendering.rb:109:in `render_to_body'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_controller/metal/renderers.rb:47:in `render_to_body'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_controller/metal/compatibility.rb:55:in `render_to_body'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/abstract_controller/rendering.rb:102:in `render_to_string'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/abstract_controller/rendering.rb:93:in `render'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_controller/metal/rendering.rb:17:in `render'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_controller/metal/instrumentation.rb:40:in `block (2 levels) in render'
+/usr/local/lib/ruby/gems/1.9.1/gems/activesupport-3.0.9/lib/active_support/core_ext/benchmark.rb:5:in `block in ms'
+/usr/local/lib/ruby/1.9.1/benchmark.rb:309:in `realtime'
+/usr/local/lib/ruby/gems/1.9.1/gems/activesupport-3.0.9/lib/active_support/core_ext/benchmark.rb:5:in `ms'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_controller/metal/instrumentation.rb:40:in `block in render'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_controller/metal/instrumentation.rb:78:in `cleanup_view_runtime'
+/usr/local/lib/ruby/gems/1.9.1/gems/activerecord-3.0.9/lib/active_record/railties/controller_runtime.rb:15:in `cleanup_view_runtime'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_controller/metal/instrumentation.rb:39:in `render'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_controller/metal/mime_responds.rb:261:in `block in retrieve_response_from_mimes'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_controller/metal/mime_responds.rb:192:in `call'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_controller/metal/mime_responds.rb:192:in `respond_to'
+/Users/matthewkucera/Desktop/projects/interview_assignment/app/controllers/purchases_controller.rb:29:in `new'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_controller/metal/implicit_render.rb:4:in `send_action'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/abstract_controller/base.rb:150:in `process_action'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_controller/metal/rendering.rb:11:in `process_action'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/abstract_controller/callbacks.rb:18:in `block in process_action'
+/usr/local/lib/ruby/gems/1.9.1/gems/activesupport-3.0.9/lib/active_support/callbacks.rb:436:in `_run__1004103971850724083__process_action__4249244627226932410__callbacks'
+/usr/local/lib/ruby/gems/1.9.1/gems/activesupport-3.0.9/lib/active_support/callbacks.rb:410:in `_run_process_action_callbacks'
+/usr/local/lib/ruby/gems/1.9.1/gems/activesupport-3.0.9/lib/active_support/callbacks.rb:94:in `run_callbacks'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/abstract_controller/callbacks.rb:17:in `process_action'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_controller/metal/instrumentation.rb:30:in `block in process_action'
+/usr/local/lib/ruby/gems/1.9.1/gems/activesupport-3.0.9/lib/active_support/notifications.rb:52:in `block in instrument'
+/usr/local/lib/ruby/gems/1.9.1/gems/activesupport-3.0.9/lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+/usr/local/lib/ruby/gems/1.9.1/gems/activesupport-3.0.9/lib/active_support/notifications.rb:52:in `instrument'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_controller/metal/instrumentation.rb:29:in `process_action'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_controller/metal/rescue.rb:17:in `process_action'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/abstract_controller/base.rb:119:in `process'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/abstract_controller/rendering.rb:41:in `process'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_controller/metal.rb:138:in `dispatch'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_controller/metal.rb:178:in `block in action'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_dispatch/routing/route_set.rb:62:in `call'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_dispatch/routing/route_set.rb:62:in `dispatch'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_dispatch/routing/route_set.rb:27:in `call'
+/usr/local/lib/ruby/gems/1.9.1/gems/rack-mount-0.6.14/lib/rack/mount/route_set.rb:148:in `block in call'
+/usr/local/lib/ruby/gems/1.9.1/gems/rack-mount-0.6.14/lib/rack/mount/code_generation.rb:93:in `block in recognize'
+/usr/local/lib/ruby/gems/1.9.1/gems/rack-mount-0.6.14/lib/rack/mount/code_generation.rb:75:in `optimized_each'
+/usr/local/lib/ruby/gems/1.9.1/gems/rack-mount-0.6.14/lib/rack/mount/code_generation.rb:92:in `recognize'
+/usr/local/lib/ruby/gems/1.9.1/gems/rack-mount-0.6.14/lib/rack/mount/route_set.rb:139:in `call'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_dispatch/routing/route_set.rb:493:in `call'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_dispatch/middleware/head.rb:14:in `call'
+/usr/local/lib/ruby/gems/1.9.1/gems/rack-1.2.3/lib/rack/methodoverride.rb:24:in `call'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_dispatch/middleware/flash.rb:182:in `call'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_dispatch/middleware/session/abstract_store.rb:149:in `call'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_dispatch/middleware/cookies.rb:302:in `call'
+/usr/local/lib/ruby/gems/1.9.1/gems/activerecord-3.0.9/lib/active_record/query_cache.rb:32:in `block in call'
+/usr/local/lib/ruby/gems/1.9.1/gems/activerecord-3.0.9/lib/active_record/connection_adapters/abstract/query_cache.rb:28:in `cache'
+/usr/local/lib/ruby/gems/1.9.1/gems/activerecord-3.0.9/lib/active_record/query_cache.rb:12:in `cache'
+/usr/local/lib/ruby/gems/1.9.1/gems/activerecord-3.0.9/lib/active_record/query_cache.rb:31:in `call'
+/usr/local/lib/ruby/gems/1.9.1/gems/activerecord-3.0.9/lib/active_record/connection_adapters/abstract/connection_pool.rb:354:in `call'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_dispatch/middleware/callbacks.rb:46:in `block in call'
+/usr/local/lib/ruby/gems/1.9.1/gems/activesupport-3.0.9/lib/active_support/callbacks.rb:416:in `_run_call_callbacks'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_dispatch/middleware/callbacks.rb:44:in `call'
+/usr/local/lib/ruby/gems/1.9.1/gems/rack-1.2.3/lib/rack/sendfile.rb:107:in `call'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_dispatch/middleware/remote_ip.rb:48:in `call'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_dispatch/middleware/show_exceptions.rb:47:in `call'
+/usr/local/lib/ruby/gems/1.9.1/gems/railties-3.0.9/lib/rails/rack/logger.rb:13:in `call'
+/usr/local/lib/ruby/gems/1.9.1/gems/rack-1.2.3/lib/rack/runtime.rb:17:in `call'
+/usr/local/lib/ruby/gems/1.9.1/gems/activesupport-3.0.9/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+/usr/local/lib/ruby/gems/1.9.1/gems/rack-1.2.3/lib/rack/lock.rb:11:in `block in call'
+<internal:prelude>:10:in `synchronize'
+/usr/local/lib/ruby/gems/1.9.1/gems/rack-1.2.3/lib/rack/lock.rb:11:in `call'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_dispatch/middleware/static.rb:30:in `call'
+/usr/local/lib/ruby/gems/1.9.1/gems/railties-3.0.9/lib/rails/application.rb:168:in `call'
+/usr/local/lib/ruby/gems/1.9.1/gems/railties-3.0.9/lib/rails/application.rb:77:in `method_missing'
+/usr/local/lib/ruby/gems/1.9.1/gems/railties-3.0.9/lib/rails/rack/log_tailer.rb:14:in `call'
+/usr/local/lib/ruby/gems/1.9.1/gems/rack-1.2.3/lib/rack/content_length.rb:13:in `call'
+/usr/local/lib/ruby/gems/1.9.1/gems/rack-1.2.3/lib/rack/handler/webrick.rb:52:in `service'
+/usr/local/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+/usr/local/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+/usr/local/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+Rendered purchases/_form.html.erb (1.8ms)
+Rendered purchases/new.html.erb within layouts/application (4.1ms)
+Completed 500 Internal Server Error in 59ms
+
+ActionView::Template::Error (/Users/matthewkucera/Desktop/projects/interview_assignment/app/views/purchases/_form.html.erb:14: syntax error, unexpected tASSOC, expecting ')'
+...t_buffer.append= (:item_name => @item_name);@output_buffer.s...
+...                               ^):
+    11:     </div>
+    12:   <% end %>
+    13:   <p>Thank you for your purchase of a <%= @item_name%></p>
+    14:   <%=:item_name => @item_name%>
+    15:   <div class="field">
+    16:     <%= f.label :item_name %><br />
+    17:     <%= f.text_field :item_name %>
+  app/views/purchases/new.html.erb:3:in `_app_views_purchases_new_html_erb___1992155988868521680_2177680620_355899949731811942'
+  app/controllers/purchases_controller.rb:29:in `new'
+
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.2ms)
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (12.3ms)
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (20.7ms)
+
+
+Started GET "/purchases/new?param=Blue+Pencil" for 127.0.0.1 at 2011-07-21 06:09:18 -0400
+  Processing by PurchasesController#new as HTML
+  Parameters: {"param"=>"Blue Pencil"}
+ERROR: compiling _app_views_purchases__form_html_erb__1056072924628784444_2153783580__2860164797266903067 RAISED /Users/matthewkucera/Desktop/projects/interview_assignment/app/views/purchases/_form.html.erb:14: syntax error, unexpected '=', expecting ')'
+...ut_buffer.append= (:item_name = @item_name);@output_buffer.s...
+...                               ^
+Function body:           def _app_views_purchases__form_html_erb__1056072924628784444_2153783580__2860164797266903067(local_assigns)
+            _old_virtual_path, @_virtual_path = @_virtual_path, "purchases/_form";_old_output_buffer = @output_buffer;form = local_assigns[:form];;@output_buffer = ActionView::OutputBuffer.new;@output_buffer.append=  form_for(@purchase) do |f| @output_buffer.safe_concat('
+');   if @purchase.errors.any? 
+@output_buffer.safe_concat('    <div id="error_explanation">
+      <h2>');@output_buffer.append= ( pluralize(@purchase.errors.count, "error") );@output_buffer.safe_concat(' prohibited this purchase from being saved:</h2>
+
+      <ul>
+');@output_buffer.append_if_string=        @purchase.errors.full_messages.each do |msg| 
+@output_buffer.safe_concat('        <li>');@output_buffer.append= ( msg );@output_buffer.safe_concat('</li>
+');       end 
+@output_buffer.safe_concat('      </ul>
+    </div>
+');   end 
+@output_buffer.safe_concat('  <p>Thank you for your purchase of a ');@output_buffer.append= ( @item_name);@output_buffer.safe_concat('</p>
+  ');@output_buffer.append= (:item_name = @item_name);@output_buffer.safe_concat('
+');@output_buffer.safe_concat('  <div class="field">
+    ');@output_buffer.append= ( f.label :item_name );@output_buffer.safe_concat('<br />
+    ');@output_buffer.append= ( f.text_field :item_name );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('  </div>
+  <div class="field">
+    ');@output_buffer.append= ( f.label :email );@output_buffer.safe_concat('<br />
+    ');@output_buffer.append= ( f.text_field :email );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('  </div>
+  <div class="actions">
+    ');@output_buffer.append= ( f.submit );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('  </div>
+'); end 
+@output_buffer.to_s
+          ensure
+            @_virtual_path, @output_buffer = _old_virtual_path, _old_output_buffer
+          end
+Backtrace: /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_view/template.rb:258:in `module_eval'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_view/template.rb:258:in `compile'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_view/template.rb:134:in `block in render'
+/usr/local/lib/ruby/gems/1.9.1/gems/activesupport-3.0.9/lib/active_support/notifications.rb:54:in `instrument'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_view/template.rb:127:in `render'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_view/render/partials.rb:333:in `render_partial'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_view/render/partials.rb:262:in `block in render'
+/usr/local/lib/ruby/gems/1.9.1/gems/activesupport-3.0.9/lib/active_support/notifications.rb:52:in `block in instrument'
+/usr/local/lib/ruby/gems/1.9.1/gems/activesupport-3.0.9/lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+/usr/local/lib/ruby/gems/1.9.1/gems/activesupport-3.0.9/lib/active_support/notifications.rb:52:in `instrument'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_view/render/partials.rb:260:in `render'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_view/render/partials.rb:378:in `_render_partial'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_view/render/rendering.rb:31:in `render'
+/Users/matthewkucera/Desktop/projects/interview_assignment/app/views/purchases/new.html.erb:3:in `_app_views_purchases_new_html_erb___1992155988868521680_2153819260_355899949731811942'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_view/template.rb:135:in `block in render'
+/usr/local/lib/ruby/gems/1.9.1/gems/activesupport-3.0.9/lib/active_support/notifications.rb:54:in `instrument'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_view/template.rb:127:in `render'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_view/render/rendering.rb:59:in `block in _render_template'
+/usr/local/lib/ruby/gems/1.9.1/gems/activesupport-3.0.9/lib/active_support/notifications.rb:52:in `block in instrument'
+/usr/local/lib/ruby/gems/1.9.1/gems/activesupport-3.0.9/lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+/usr/local/lib/ruby/gems/1.9.1/gems/activesupport-3.0.9/lib/active_support/notifications.rb:52:in `instrument'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_view/render/rendering.rb:56:in `_render_template'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_view/render/rendering.rb:26:in `render'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/abstract_controller/rendering.rb:115:in `_render_template'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/abstract_controller/rendering.rb:109:in `render_to_body'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_controller/metal/renderers.rb:47:in `render_to_body'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_controller/metal/compatibility.rb:55:in `render_to_body'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/abstract_controller/rendering.rb:102:in `render_to_string'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/abstract_controller/rendering.rb:93:in `render'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_controller/metal/rendering.rb:17:in `render'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_controller/metal/instrumentation.rb:40:in `block (2 levels) in render'
+/usr/local/lib/ruby/gems/1.9.1/gems/activesupport-3.0.9/lib/active_support/core_ext/benchmark.rb:5:in `block in ms'
+/usr/local/lib/ruby/1.9.1/benchmark.rb:309:in `realtime'
+/usr/local/lib/ruby/gems/1.9.1/gems/activesupport-3.0.9/lib/active_support/core_ext/benchmark.rb:5:in `ms'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_controller/metal/instrumentation.rb:40:in `block in render'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_controller/metal/instrumentation.rb:78:in `cleanup_view_runtime'
+/usr/local/lib/ruby/gems/1.9.1/gems/activerecord-3.0.9/lib/active_record/railties/controller_runtime.rb:15:in `cleanup_view_runtime'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_controller/metal/instrumentation.rb:39:in `render'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_controller/metal/mime_responds.rb:261:in `block in retrieve_response_from_mimes'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_controller/metal/mime_responds.rb:192:in `call'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_controller/metal/mime_responds.rb:192:in `respond_to'
+/Users/matthewkucera/Desktop/projects/interview_assignment/app/controllers/purchases_controller.rb:29:in `new'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_controller/metal/implicit_render.rb:4:in `send_action'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/abstract_controller/base.rb:150:in `process_action'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_controller/metal/rendering.rb:11:in `process_action'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/abstract_controller/callbacks.rb:18:in `block in process_action'
+/usr/local/lib/ruby/gems/1.9.1/gems/activesupport-3.0.9/lib/active_support/callbacks.rb:436:in `_run__1004103971850724083__process_action__4249244627226932410__callbacks'
+/usr/local/lib/ruby/gems/1.9.1/gems/activesupport-3.0.9/lib/active_support/callbacks.rb:410:in `_run_process_action_callbacks'
+/usr/local/lib/ruby/gems/1.9.1/gems/activesupport-3.0.9/lib/active_support/callbacks.rb:94:in `run_callbacks'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/abstract_controller/callbacks.rb:17:in `process_action'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_controller/metal/instrumentation.rb:30:in `block in process_action'
+/usr/local/lib/ruby/gems/1.9.1/gems/activesupport-3.0.9/lib/active_support/notifications.rb:52:in `block in instrument'
+/usr/local/lib/ruby/gems/1.9.1/gems/activesupport-3.0.9/lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+/usr/local/lib/ruby/gems/1.9.1/gems/activesupport-3.0.9/lib/active_support/notifications.rb:52:in `instrument'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_controller/metal/instrumentation.rb:29:in `process_action'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_controller/metal/rescue.rb:17:in `process_action'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/abstract_controller/base.rb:119:in `process'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/abstract_controller/rendering.rb:41:in `process'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_controller/metal.rb:138:in `dispatch'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_controller/metal.rb:178:in `block in action'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_dispatch/routing/route_set.rb:62:in `call'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_dispatch/routing/route_set.rb:62:in `dispatch'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_dispatch/routing/route_set.rb:27:in `call'
+/usr/local/lib/ruby/gems/1.9.1/gems/rack-mount-0.6.14/lib/rack/mount/route_set.rb:148:in `block in call'
+/usr/local/lib/ruby/gems/1.9.1/gems/rack-mount-0.6.14/lib/rack/mount/code_generation.rb:93:in `block in recognize'
+/usr/local/lib/ruby/gems/1.9.1/gems/rack-mount-0.6.14/lib/rack/mount/code_generation.rb:75:in `optimized_each'
+/usr/local/lib/ruby/gems/1.9.1/gems/rack-mount-0.6.14/lib/rack/mount/code_generation.rb:92:in `recognize'
+/usr/local/lib/ruby/gems/1.9.1/gems/rack-mount-0.6.14/lib/rack/mount/route_set.rb:139:in `call'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_dispatch/routing/route_set.rb:493:in `call'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_dispatch/middleware/head.rb:14:in `call'
+/usr/local/lib/ruby/gems/1.9.1/gems/rack-1.2.3/lib/rack/methodoverride.rb:24:in `call'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_dispatch/middleware/flash.rb:182:in `call'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_dispatch/middleware/session/abstract_store.rb:149:in `call'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_dispatch/middleware/cookies.rb:302:in `call'
+/usr/local/lib/ruby/gems/1.9.1/gems/activerecord-3.0.9/lib/active_record/query_cache.rb:32:in `block in call'
+/usr/local/lib/ruby/gems/1.9.1/gems/activerecord-3.0.9/lib/active_record/connection_adapters/abstract/query_cache.rb:28:in `cache'
+/usr/local/lib/ruby/gems/1.9.1/gems/activerecord-3.0.9/lib/active_record/query_cache.rb:12:in `cache'
+/usr/local/lib/ruby/gems/1.9.1/gems/activerecord-3.0.9/lib/active_record/query_cache.rb:31:in `call'
+/usr/local/lib/ruby/gems/1.9.1/gems/activerecord-3.0.9/lib/active_record/connection_adapters/abstract/connection_pool.rb:354:in `call'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_dispatch/middleware/callbacks.rb:46:in `block in call'
+/usr/local/lib/ruby/gems/1.9.1/gems/activesupport-3.0.9/lib/active_support/callbacks.rb:416:in `_run_call_callbacks'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_dispatch/middleware/callbacks.rb:44:in `call'
+/usr/local/lib/ruby/gems/1.9.1/gems/rack-1.2.3/lib/rack/sendfile.rb:107:in `call'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_dispatch/middleware/remote_ip.rb:48:in `call'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_dispatch/middleware/show_exceptions.rb:47:in `call'
+/usr/local/lib/ruby/gems/1.9.1/gems/railties-3.0.9/lib/rails/rack/logger.rb:13:in `call'
+/usr/local/lib/ruby/gems/1.9.1/gems/rack-1.2.3/lib/rack/runtime.rb:17:in `call'
+/usr/local/lib/ruby/gems/1.9.1/gems/activesupport-3.0.9/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+/usr/local/lib/ruby/gems/1.9.1/gems/rack-1.2.3/lib/rack/lock.rb:11:in `block in call'
+<internal:prelude>:10:in `synchronize'
+/usr/local/lib/ruby/gems/1.9.1/gems/rack-1.2.3/lib/rack/lock.rb:11:in `call'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_dispatch/middleware/static.rb:30:in `call'
+/usr/local/lib/ruby/gems/1.9.1/gems/railties-3.0.9/lib/rails/application.rb:168:in `call'
+/usr/local/lib/ruby/gems/1.9.1/gems/railties-3.0.9/lib/rails/application.rb:77:in `method_missing'
+/usr/local/lib/ruby/gems/1.9.1/gems/railties-3.0.9/lib/rails/rack/log_tailer.rb:14:in `call'
+/usr/local/lib/ruby/gems/1.9.1/gems/rack-1.2.3/lib/rack/content_length.rb:13:in `call'
+/usr/local/lib/ruby/gems/1.9.1/gems/rack-1.2.3/lib/rack/handler/webrick.rb:52:in `service'
+/usr/local/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+/usr/local/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+/usr/local/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+Rendered purchases/_form.html.erb (2.1ms)
+Rendered purchases/new.html.erb within layouts/application (4.4ms)
+Completed 500 Internal Server Error in 23ms
+
+ActionView::Template::Error (/Users/matthewkucera/Desktop/projects/interview_assignment/app/views/purchases/_form.html.erb:14: syntax error, unexpected '=', expecting ')'
+...ut_buffer.append= (:item_name = @item_name);@output_buffer.s...
+...                               ^):
+    11:     </div>
+    12:   <% end %>
+    13:   <p>Thank you for your purchase of a <%= @item_name%></p>
+    14:   <%=:item_name = @item_name%>
+    15:   <div class="field">
+    16:     <%= f.label :item_name %><br />
+    17:     <%= f.text_field :item_name %>
+  app/views/purchases/new.html.erb:3:in `_app_views_purchases_new_html_erb___1992155988868521680_2153819260_355899949731811942'
+  app/controllers/purchases_controller.rb:29:in `new'
+
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.2ms)
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (12.1ms)
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (20.6ms)
+
+
+Started GET "/purchases/new?param=Blue+Pencil" for 127.0.0.1 at 2011-07-21 06:11:23 -0400
+  Processing by PurchasesController#new as HTML
+  Parameters: {"param"=>"Blue Pencil"}
+Rendered purchases/_form.html.erb (19.3ms)
+Rendered purchases/new.html.erb within layouts/application (21.7ms)
+Completed 500 Internal Server Error in 41ms
+
+ActionView::Template::Error (undefined method `field' for #<#<Class:0x00000103940f08>:0x00000103855da0>):
+    11:     </div>
+    12:   <% end %>
+    13:   <p>Thank you for your purchase of a <%= @item_name%></p>
+    14:   <%=field :item_name, :value => @item_name%>
+    15:   <div class="field">
+    16:     <%= f.label :item_name %><br />
+    17:     <%= f.text_field :item_name %>
+  app/views/purchases/_form.html.erb:14:in `block in _app_views_purchases__form_html_erb__1056072924628784444_2177001300__2860164797266903067'
+  app/views/purchases/_form.html.erb:1:in `_app_views_purchases__form_html_erb__1056072924628784444_2177001300__2860164797266903067'
+  app/views/purchases/new.html.erb:3:in `_app_views_purchases_new_html_erb___1992155988868521680_2177015520_355899949731811942'
+  app/controllers/purchases_controller.rb:29:in `new'
+
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.4ms)
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (6.0ms)
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (14.5ms)
+
+
+Started GET "/purchases/new?param=Blue+Pencil" for 127.0.0.1 at 2011-07-21 06:15:42 -0400
+  Processing by PurchasesController#new as HTML
+  Parameters: {"param"=>"Blue Pencil"}
+Rendered purchases/_form.html.erb (10.6ms)
+Rendered purchases/new.html.erb within layouts/application (13.0ms)
+Completed 500 Internal Server Error in 32ms
+
+ActionView::Template::Error (wrong number of arguments (0 for 1)):
+    14:   <div class="field">
+    15:     <%= f.label :item_name %><br />
+    16:     <%= f.text_field :item_name %>
+    17:     <%= f.text_field.text = @item_name%>
+    18:   </div>
+    19:   <div class="field">
+    20:     <%= f.label :email %><br />
+  app/views/purchases/_form.html.erb:17:in `block in _app_views_purchases__form_html_erb__1056072924628784444_2153451320__2860164797266903067'
+  app/views/purchases/_form.html.erb:1:in `_app_views_purchases__form_html_erb__1056072924628784444_2153451320__2860164797266903067'
+  app/views/purchases/new.html.erb:3:in `_app_views_purchases_new_html_erb___1992155988868521680_2153464260_355899949731811942'
+  app/controllers/purchases_controller.rb:29:in `new'
+
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.3ms)
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (41.9ms)
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (50.3ms)
+
+
+Started GET "/purchases/new?param=Blue+Pencil" for 127.0.0.1 at 2011-07-21 06:17:38 -0400
+  Processing by PurchasesController#new as HTML
+  Parameters: {"param"=>"Blue Pencil"}
+Rendered purchases/_form.html.erb (10.5ms)
+Rendered purchases/new.html.erb within layouts/application (12.8ms)
+Completed 500 Internal Server Error in 32ms
+
+ActionView::Template::Error (wrong number of arguments (0 for 1)):
+    14:   <div class="field">
+    15:     <%= f.label :item_name %><br />
+    16:     <%= f.text_field :item_name %>
+    17:     <%= f.text_field.value = @item_name%>
+    18:   </div>
+    19:   <div class="field">
+    20:     <%= f.label :email %><br />
+  app/views/purchases/_form.html.erb:17:in `block in _app_views_purchases__form_html_erb__1056072924628784444_2158540440__2860164797266903067'
+  app/views/purchases/_form.html.erb:1:in `_app_views_purchases__form_html_erb__1056072924628784444_2158540440__2860164797266903067'
+  app/views/purchases/new.html.erb:3:in `_app_views_purchases_new_html_erb___1992155988868521680_2158597360_355899949731811942'
+  app/controllers/purchases_controller.rb:29:in `new'
+
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.2ms)
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (6.0ms)
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (14.2ms)
+
+
+Started GET "/purchases/new?param=Blue+Pencil" for 127.0.0.1 at 2011-07-21 06:22:03 -0400
+  Processing by PurchasesController#new as HTML
+  Parameters: {"param"=>"Blue Pencil"}
+Rendered purchases/_form.html.erb (12.1ms)
+Rendered purchases/new.html.erb within layouts/application (54.0ms)
+Completed 200 OK in 73ms (Views: 60.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/purchases/new?param=Blue+Pencil" for 127.0.0.1 at 2011-07-21 06:23:18 -0400
+  Processing by PurchasesController#new as HTML
+  Parameters: {"param"=>"Blue Pencil"}
+ERROR: compiling _app_views_purchases__form_html_erb__1056072924628784444_2154228660__2860164797266903067 RAISED /Users/matthewkucera/Desktop/projects/interview_assignment/app/views/purchases/_form.html.erb:16: syntax error, unexpected ':', expecting ')'
+...em_name, :value => @item_name :disabled =>true);@output_buff...
+...                               ^
+Function body:           def _app_views_purchases__form_html_erb__1056072924628784444_2154228660__2860164797266903067(local_assigns)
+            _old_virtual_path, @_virtual_path = @_virtual_path, "purchases/_form";_old_output_buffer = @output_buffer;form = local_assigns[:form];;@output_buffer = ActionView::OutputBuffer.new;@output_buffer.append=  form_for(@purchase) do |f| @output_buffer.safe_concat('
+');   if @purchase.errors.any? 
+@output_buffer.safe_concat('    <div id="error_explanation">
+      <h2>');@output_buffer.append= ( pluralize(@purchase.errors.count, "error") );@output_buffer.safe_concat(' prohibited this purchase from being saved:</h2>
+
+      <ul>
+');@output_buffer.append_if_string=        @purchase.errors.full_messages.each do |msg| 
+@output_buffer.safe_concat('        <li>');@output_buffer.append= ( msg );@output_buffer.safe_concat('</li>
+');       end 
+@output_buffer.safe_concat('      </ul>
+    </div>
+');   end 
+@output_buffer.safe_concat('  <p>Thank you for your purchase of a ');@output_buffer.append= ( @item_name);@output_buffer.safe_concat('</p>
+  <div class="field">
+    ');@output_buffer.append= ( f.label :item_name );@output_buffer.safe_concat('<br />
+    ');@output_buffer.append= ( f.text_field :item_name, :value => @item_name :disabled =>true);@output_buffer.safe_concat('
+');@output_buffer.safe_concat('  </div>
+  <div class="field">
+    ');@output_buffer.append= ( f.label :email );@output_buffer.safe_concat('<br />
+    ');@output_buffer.append= ( f.text_field :email );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('  </div>
+  <div class="actions">
+    ');@output_buffer.append= ( f.submit );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('  </div>
+'); end 
+@output_buffer.to_s
+          ensure
+            @_virtual_path, @output_buffer = _old_virtual_path, _old_output_buffer
+          end
+Backtrace: /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_view/template.rb:258:in `module_eval'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_view/template.rb:258:in `compile'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_view/template.rb:134:in `block in render'
+/usr/local/lib/ruby/gems/1.9.1/gems/activesupport-3.0.9/lib/active_support/notifications.rb:54:in `instrument'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_view/template.rb:127:in `render'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_view/render/partials.rb:333:in `render_partial'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_view/render/partials.rb:262:in `block in render'
+/usr/local/lib/ruby/gems/1.9.1/gems/activesupport-3.0.9/lib/active_support/notifications.rb:52:in `block in instrument'
+/usr/local/lib/ruby/gems/1.9.1/gems/activesupport-3.0.9/lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+/usr/local/lib/ruby/gems/1.9.1/gems/activesupport-3.0.9/lib/active_support/notifications.rb:52:in `instrument'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_view/render/partials.rb:260:in `render'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_view/render/partials.rb:378:in `_render_partial'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_view/render/rendering.rb:31:in `render'
+/Users/matthewkucera/Desktop/projects/interview_assignment/app/views/purchases/new.html.erb:3:in `_app_views_purchases_new_html_erb___1992155988868521680_2154249560_355899949731811942'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_view/template.rb:135:in `block in render'
+/usr/local/lib/ruby/gems/1.9.1/gems/activesupport-3.0.9/lib/active_support/notifications.rb:54:in `instrument'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_view/template.rb:127:in `render'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_view/render/rendering.rb:59:in `block in _render_template'
+/usr/local/lib/ruby/gems/1.9.1/gems/activesupport-3.0.9/lib/active_support/notifications.rb:52:in `block in instrument'
+/usr/local/lib/ruby/gems/1.9.1/gems/activesupport-3.0.9/lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+/usr/local/lib/ruby/gems/1.9.1/gems/activesupport-3.0.9/lib/active_support/notifications.rb:52:in `instrument'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_view/render/rendering.rb:56:in `_render_template'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_view/render/rendering.rb:26:in `render'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/abstract_controller/rendering.rb:115:in `_render_template'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/abstract_controller/rendering.rb:109:in `render_to_body'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_controller/metal/renderers.rb:47:in `render_to_body'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_controller/metal/compatibility.rb:55:in `render_to_body'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/abstract_controller/rendering.rb:102:in `render_to_string'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/abstract_controller/rendering.rb:93:in `render'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_controller/metal/rendering.rb:17:in `render'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_controller/metal/instrumentation.rb:40:in `block (2 levels) in render'
+/usr/local/lib/ruby/gems/1.9.1/gems/activesupport-3.0.9/lib/active_support/core_ext/benchmark.rb:5:in `block in ms'
+/usr/local/lib/ruby/1.9.1/benchmark.rb:309:in `realtime'
+/usr/local/lib/ruby/gems/1.9.1/gems/activesupport-3.0.9/lib/active_support/core_ext/benchmark.rb:5:in `ms'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_controller/metal/instrumentation.rb:40:in `block in render'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_controller/metal/instrumentation.rb:78:in `cleanup_view_runtime'
+/usr/local/lib/ruby/gems/1.9.1/gems/activerecord-3.0.9/lib/active_record/railties/controller_runtime.rb:15:in `cleanup_view_runtime'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_controller/metal/instrumentation.rb:39:in `render'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_controller/metal/mime_responds.rb:261:in `block in retrieve_response_from_mimes'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_controller/metal/mime_responds.rb:192:in `call'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_controller/metal/mime_responds.rb:192:in `respond_to'
+/Users/matthewkucera/Desktop/projects/interview_assignment/app/controllers/purchases_controller.rb:29:in `new'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_controller/metal/implicit_render.rb:4:in `send_action'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/abstract_controller/base.rb:150:in `process_action'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_controller/metal/rendering.rb:11:in `process_action'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/abstract_controller/callbacks.rb:18:in `block in process_action'
+/usr/local/lib/ruby/gems/1.9.1/gems/activesupport-3.0.9/lib/active_support/callbacks.rb:436:in `_run__1004103971850724083__process_action__4249244627226932410__callbacks'
+/usr/local/lib/ruby/gems/1.9.1/gems/activesupport-3.0.9/lib/active_support/callbacks.rb:410:in `_run_process_action_callbacks'
+/usr/local/lib/ruby/gems/1.9.1/gems/activesupport-3.0.9/lib/active_support/callbacks.rb:94:in `run_callbacks'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/abstract_controller/callbacks.rb:17:in `process_action'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_controller/metal/instrumentation.rb:30:in `block in process_action'
+/usr/local/lib/ruby/gems/1.9.1/gems/activesupport-3.0.9/lib/active_support/notifications.rb:52:in `block in instrument'
+/usr/local/lib/ruby/gems/1.9.1/gems/activesupport-3.0.9/lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+/usr/local/lib/ruby/gems/1.9.1/gems/activesupport-3.0.9/lib/active_support/notifications.rb:52:in `instrument'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_controller/metal/instrumentation.rb:29:in `process_action'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_controller/metal/rescue.rb:17:in `process_action'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/abstract_controller/base.rb:119:in `process'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/abstract_controller/rendering.rb:41:in `process'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_controller/metal.rb:138:in `dispatch'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_controller/metal.rb:178:in `block in action'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_dispatch/routing/route_set.rb:62:in `call'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_dispatch/routing/route_set.rb:62:in `dispatch'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_dispatch/routing/route_set.rb:27:in `call'
+/usr/local/lib/ruby/gems/1.9.1/gems/rack-mount-0.6.14/lib/rack/mount/route_set.rb:148:in `block in call'
+/usr/local/lib/ruby/gems/1.9.1/gems/rack-mount-0.6.14/lib/rack/mount/code_generation.rb:93:in `block in recognize'
+/usr/local/lib/ruby/gems/1.9.1/gems/rack-mount-0.6.14/lib/rack/mount/code_generation.rb:75:in `optimized_each'
+/usr/local/lib/ruby/gems/1.9.1/gems/rack-mount-0.6.14/lib/rack/mount/code_generation.rb:92:in `recognize'
+/usr/local/lib/ruby/gems/1.9.1/gems/rack-mount-0.6.14/lib/rack/mount/route_set.rb:139:in `call'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_dispatch/routing/route_set.rb:493:in `call'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_dispatch/middleware/head.rb:14:in `call'
+/usr/local/lib/ruby/gems/1.9.1/gems/rack-1.2.3/lib/rack/methodoverride.rb:24:in `call'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_dispatch/middleware/flash.rb:182:in `call'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_dispatch/middleware/session/abstract_store.rb:149:in `call'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_dispatch/middleware/cookies.rb:302:in `call'
+/usr/local/lib/ruby/gems/1.9.1/gems/activerecord-3.0.9/lib/active_record/query_cache.rb:32:in `block in call'
+/usr/local/lib/ruby/gems/1.9.1/gems/activerecord-3.0.9/lib/active_record/connection_adapters/abstract/query_cache.rb:28:in `cache'
+/usr/local/lib/ruby/gems/1.9.1/gems/activerecord-3.0.9/lib/active_record/query_cache.rb:12:in `cache'
+/usr/local/lib/ruby/gems/1.9.1/gems/activerecord-3.0.9/lib/active_record/query_cache.rb:31:in `call'
+/usr/local/lib/ruby/gems/1.9.1/gems/activerecord-3.0.9/lib/active_record/connection_adapters/abstract/connection_pool.rb:354:in `call'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_dispatch/middleware/callbacks.rb:46:in `block in call'
+/usr/local/lib/ruby/gems/1.9.1/gems/activesupport-3.0.9/lib/active_support/callbacks.rb:416:in `_run_call_callbacks'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_dispatch/middleware/callbacks.rb:44:in `call'
+/usr/local/lib/ruby/gems/1.9.1/gems/rack-1.2.3/lib/rack/sendfile.rb:107:in `call'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_dispatch/middleware/remote_ip.rb:48:in `call'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_dispatch/middleware/show_exceptions.rb:47:in `call'
+/usr/local/lib/ruby/gems/1.9.1/gems/railties-3.0.9/lib/rails/rack/logger.rb:13:in `call'
+/usr/local/lib/ruby/gems/1.9.1/gems/rack-1.2.3/lib/rack/runtime.rb:17:in `call'
+/usr/local/lib/ruby/gems/1.9.1/gems/activesupport-3.0.9/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+/usr/local/lib/ruby/gems/1.9.1/gems/rack-1.2.3/lib/rack/lock.rb:11:in `block in call'
+<internal:prelude>:10:in `synchronize'
+/usr/local/lib/ruby/gems/1.9.1/gems/rack-1.2.3/lib/rack/lock.rb:11:in `call'
+/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_dispatch/middleware/static.rb:30:in `call'
+/usr/local/lib/ruby/gems/1.9.1/gems/railties-3.0.9/lib/rails/application.rb:168:in `call'
+/usr/local/lib/ruby/gems/1.9.1/gems/railties-3.0.9/lib/rails/application.rb:77:in `method_missing'
+/usr/local/lib/ruby/gems/1.9.1/gems/railties-3.0.9/lib/rails/rack/log_tailer.rb:14:in `call'
+/usr/local/lib/ruby/gems/1.9.1/gems/rack-1.2.3/lib/rack/content_length.rb:13:in `call'
+/usr/local/lib/ruby/gems/1.9.1/gems/rack-1.2.3/lib/rack/handler/webrick.rb:52:in `service'
+/usr/local/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+/usr/local/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+/usr/local/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+Rendered purchases/_form.html.erb (1.8ms)
+Rendered purchases/new.html.erb within layouts/application (4.1ms)
+Completed 500 Internal Server Error in 23ms
+
+ActionView::Template::Error (/Users/matthewkucera/Desktop/projects/interview_assignment/app/views/purchases/_form.html.erb:16: syntax error, unexpected ':', expecting ')'
+...em_name, :value => @item_name :disabled =>true);@output_buff...
+...                               ^):
+    13:   <p>Thank you for your purchase of a <%= @item_name%></p>
+    14:   <div class="field">
+    15:     <%= f.label :item_name %><br />
+    16:     <%= f.text_field :item_name, :value => @item_name :disabled =>true%>
+    17:   </div>
+    18:   <div class="field">
+    19:     <%= f.label :email %><br />
+  app/views/purchases/new.html.erb:3:in `_app_views_purchases_new_html_erb___1992155988868521680_2154249560_355899949731811942'
+  app/controllers/purchases_controller.rb:29:in `new'
+
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.2ms)
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (11.9ms)
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (20.5ms)
+
+
+Started GET "/purchases/new?param=Blue+Pencil" for 127.0.0.1 at 2011-07-21 06:23:52 -0400
+  Processing by PurchasesController#new as HTML
+  Parameters: {"param"=>"Blue Pencil"}
+Rendered purchases/_form.html.erb (48.4ms)
+Rendered purchases/new.html.erb within layouts/application (53.6ms)
+Completed 200 OK in 72ms (Views: 59.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/purchases" for 127.0.0.1 at 2011-07-21 06:24:07 -0400
+  Processing by PurchasesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"47eTltumZWMVhVywhXoEin0pbVvgVEPl5ZdbHMdNkDU=", "purchase"=>{"email"=>"matthew.a.kucera@gmail.com"}, "commit"=>"Create Purchase"}
+  [1m[35mAREL (0.4ms)[0m  INSERT INTO "purchases" ("item_name", "email", "created_at", "updated_at") VALUES (NULL, 'matthew.a.kucera@gmail.com', '2011-07-21 10:24:07.480855', '2011-07-21 10:24:07.480855')
+Redirected to http://localhost:3000/purchases/1
+Completed 302 Found in 32ms
+
+
+Started GET "/purchases/1" for 127.0.0.1 at 2011-07-21 06:24:07 -0400
+  Processing by PurchasesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPurchase Load (0.5ms)[0m  [1mSELECT "purchases".* FROM "purchases" WHERE "purchases"."id" = 1 LIMIT 1[0m
+Rendered purchases/show.html.erb within layouts/application (13.6ms)
+Completed 200 OK in 34ms (Views: 20.0ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/purchases" for 127.0.0.1 at 2011-07-21 06:24:22 -0400
+  Processing by PurchasesController#index as HTML
+  [1m[35mPurchase Load (0.7ms)[0m  SELECT "purchases".* FROM "purchases"
+Rendered purchases/index.html.erb within layouts/application (16.5ms)
+Completed 200 OK in 34ms (Views: 22.8ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/purchases/1" for 127.0.0.1 at 2011-07-21 06:24:35 -0400
+  Processing by PurchasesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"47eTltumZWMVhVywhXoEin0pbVvgVEPl5ZdbHMdNkDU=", "id"=>"1"}
+  [1m[36mPurchase Load (0.5ms)[0m  [1mSELECT "purchases".* FROM "purchases" WHERE "purchases"."id" = 1 LIMIT 1[0m
+  [1m[35mAREL (0.4ms)[0m  DELETE FROM "purchases" WHERE "purchases"."id" = 1
+Redirected to http://localhost:3000/purchases
+Completed 302 Found in 29ms
+
+
+Started GET "/purchases" for 127.0.0.1 at 2011-07-21 06:24:35 -0400
+  Processing by PurchasesController#index as HTML
+  [1m[36mPurchase Load (0.4ms)[0m  [1mSELECT "purchases".* FROM "purchases"[0m
+Rendered purchases/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 21ms (Views: 10.2ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/purchases/new" for 127.0.0.1 at 2011-07-21 06:24:37 -0400
+  Processing by PurchasesController#new as HTML
+Rendered purchases/_form.html.erb (12.2ms)
+Rendered purchases/new.html.erb within layouts/application (17.5ms)
+Completed 200 OK in 37ms (Views: 23.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-07-21 06:24:41 -0400
+  Processing by HomeController#index as HTML
+  [1m[35mPencil Load (0.5ms)[0m  SELECT "pencils".* FROM "pencils"
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT "books".* FROM "books"[0m
+  [1m[35mMembership Load (0.3ms)[0m  SELECT "memberships".* FROM "memberships"
+Rendered home/index.html.erb within layouts/application (30.3ms)
+Completed 200 OK in 67ms (Views: 36.4ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/purchases/new?param=Blue+Pencil" for 127.0.0.1 at 2011-07-21 06:24:43 -0400
+  Processing by PurchasesController#new as HTML
+  Parameters: {"param"=>"Blue Pencil"}
+Rendered purchases/_form.html.erb (12.3ms)
+Rendered purchases/new.html.erb within layouts/application (17.7ms)
+Completed 200 OK in 37ms (Views: 24.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/purchases/new?param=Blue+Pencil" for 127.0.0.1 at 2011-07-21 06:24:59 -0400
+  Processing by PurchasesController#new as HTML
+  Parameters: {"param"=>"Blue Pencil"}
+Rendered purchases/_form.html.erb (12.2ms)
+Rendered purchases/new.html.erb within layouts/application (17.2ms)
+Completed 200 OK in 36ms (Views: 23.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/purchases" for 127.0.0.1 at 2011-07-21 06:25:07 -0400
+  Processing by PurchasesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"47eTltumZWMVhVywhXoEin0pbVvgVEPl5ZdbHMdNkDU=", "purchase"=>{"item_name"=>"Blue Pencil", "email"=>"matthew.a.kucera@gmail.com"}, "commit"=>"Create Purchase"}
+  [1m[36mAREL (0.4ms)[0m  [1mINSERT INTO "purchases" ("item_name", "email", "created_at", "updated_at") VALUES ('Blue Pencil', 'matthew.a.kucera@gmail.com', '2011-07-21 10:25:07.809000', '2011-07-21 10:25:07.809000')[0m
+Redirected to http://localhost:3000/purchases/2
+Completed 302 Found in 69ms
+
+
+Started GET "/purchases/2" for 127.0.0.1 at 2011-07-21 06:25:07 -0400
+  Processing by PurchasesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mPurchase Load (0.2ms)[0m  SELECT "purchases".* FROM "purchases" WHERE "purchases"."id" = 2 LIMIT 1
+Rendered purchases/show.html.erb within layouts/application (13.8ms)
+Completed 200 OK in 34ms (Views: 20.0ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/purchases" for 127.0.0.1 at 2011-07-21 06:25:11 -0400
+  Processing by PurchasesController#index as HTML
+  [1m[36mPurchase Load (0.4ms)[0m  [1mSELECT "purchases".* FROM "purchases"[0m
+Rendered purchases/index.html.erb within layouts/application (16.0ms)
+Completed 200 OK in 33ms (Views: 22.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-07-21 06:25:39 -0400
+  Processing by HomeController#index as HTML
+  [1m[35mPencil Load (0.5ms)[0m  SELECT "pencils".* FROM "pencils"
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT "books".* FROM "books"[0m
+  [1m[35mMembership Load (0.2ms)[0m  SELECT "memberships".* FROM "memberships"
+Rendered home/index.html.erb within layouts/application (31.1ms)
+Completed 200 OK in 67ms (Views: 37.4ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-07-21 06:27:21 -0400
+  Processing by HomeController#index as HTML
+  [1m[36mPencil Load (0.5ms)[0m  [1mSELECT "pencils".* FROM "pencils"[0m
+  [1m[35mBook Load (0.2ms)[0m  SELECT "books".* FROM "books"
+  [1m[36mMembership Load (0.3ms)[0m  [1mSELECT "memberships".* FROM "memberships"[0m
+Rendered home/index.html.erb within layouts/application (29.8ms)
+Completed 200 OK in 102ms (Views: 35.9ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/purchases/new?param=Red+Pencil" for 127.0.0.1 at 2011-07-21 06:27:23 -0400
+  Processing by PurchasesController#new as HTML
+  Parameters: {"param"=>"Red Pencil"}
+Rendered purchases/_form.html.erb (12.0ms)
+Rendered purchases/new.html.erb within layouts/application (17.2ms)
+Completed 200 OK in 36ms (Views: 23.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/purchases" for 127.0.0.1 at 2011-07-21 06:27:28 -0400
+  Processing by PurchasesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"47eTltumZWMVhVywhXoEin0pbVvgVEPl5ZdbHMdNkDU=", "purchase"=>{"item_name"=>"Red Pencil", "email"=>"matthew.a.kucera@gmail.com"}, "commit"=>"Create Purchase"}
+  [1m[35mAREL (0.4ms)[0m  INSERT INTO "purchases" ("item_name", "email", "created_at", "updated_at") VALUES ('Red Pencil', 'matthew.a.kucera@gmail.com', '2011-07-21 10:27:28.144402', '2011-07-21 10:27:28.144402')
+Redirected to http://localhost:3000/purchases/3
+Completed 302 Found in 68ms
+
+
+Started GET "/purchases/3" for 127.0.0.1 at 2011-07-21 06:27:28 -0400
+  Processing by PurchasesController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mPurchase Load (0.2ms)[0m  [1mSELECT "purchases".* FROM "purchases" WHERE "purchases"."id" = 3 LIMIT 1[0m
+Rendered purchases/show.html.erb within layouts/application (13.8ms)
+Completed 200 OK in 35ms (Views: 20.1ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/purchases" for 127.0.0.1 at 2011-07-21 06:28:21 -0400
+  Processing by PurchasesController#index as HTML
+  [1m[35mPurchase Load (0.5ms)[0m  SELECT "purchases".* FROM "purchases"
+Rendered purchases/index.html.erb within layouts/application (18.0ms)
+Completed 200 OK in 35ms (Views: 24.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/purchases" for 127.0.0.1 at 2011-07-21 06:29:35 -0400
+  Processing by PurchasesController#index as HTML
+  [1m[36mPurchase Load (0.5ms)[0m  [1mSELECT "purchases".* FROM "purchases"[0m
+Rendered purchases/index.html.erb within layouts/application (24.9ms)
+Completed 500 Internal Server Error in 42ms
+
+ActionView::Template::Error (undefined local variable or method `home_path' for #<#<Class:0x0000010384a3d8>:0x00000103847d40>):
+    21: <br />
+    22: 
+    23: <%= link_to 'New Purchase', new_purchase_path %>
+    24: <%= link_to 'Home', home_path%>
+  app/views/purchases/index.html.erb:24:in `_app_views_purchases_index_html_erb___3679981575765654103_2176987440_355899949731811942'
+  app/controllers/purchases_controller.rb:7:in `index'
+
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.2ms)
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (6.3ms)
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (14.7ms)
+
+
+Started GET "/purchases" for 127.0.0.1 at 2011-07-21 06:30:06 -0400
+  Processing by PurchasesController#index as HTML
+  [1m[35mPurchase Load (0.5ms)[0m  SELECT "purchases".* FROM "purchases"
+Rendered purchases/index.html.erb within layouts/application (24.6ms)
+Completed 500 Internal Server Error in 42ms
+
+ActionView::Template::Error (undefined local variable or method `root' for #<#<Class:0x00000100b640d0>:0x00000100b61b78>):
+    21: <br />
+    22: 
+    23: <%= link_to 'New Purchase', new_purchase_path %>
+    24: <%= link_to 'Home', root%>
+  app/views/purchases/index.html.erb:24:in `_app_views_purchases_index_html_erb___3679981575765654103_2153447300_355899949731811942'
+  app/controllers/purchases_controller.rb:7:in `index'
+
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.2ms)
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (6.2ms)
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (14.5ms)
+
+
+Started GET "/purchases" for 127.0.0.1 at 2011-07-21 06:30:42 -0400
+  Processing by PurchasesController#index as HTML
+  [1m[36mPurchase Load (0.5ms)[0m  [1mSELECT "purchases".* FROM "purchases"[0m
+Rendered purchases/index.html.erb within layouts/application (16.6ms)
+Completed 200 OK in 34ms (Views: 22.8ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-07-21 06:30:45 -0400
+  Processing by HomeController#index as HTML
+  [1m[35mPencil Load (0.5ms)[0m  SELECT "pencils".* FROM "pencils"
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT "books".* FROM "books"[0m
+  [1m[35mMembership Load (0.3ms)[0m  SELECT "memberships".* FROM "memberships"
+Rendered home/index.html.erb within layouts/application (66.7ms)
+Completed 200 OK in 103ms (Views: 72.8ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-07-21 06:32:32 -0400
+  Processing by HomeController#index as HTML
+  [1m[36mPencil Load (0.5ms)[0m  [1mSELECT "pencils".* FROM "pencils"[0m
+  [1m[35mBook Load (0.2ms)[0m  SELECT "books".* FROM "books"
+  [1m[36mMembership Load (0.3ms)[0m  [1mSELECT "memberships".* FROM "memberships"[0m
+Rendered home/index.html.erb within layouts/application (31.5ms)
+Completed 200 OK in 67ms (Views: 37.6ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/purchases/new?param=1" for 127.0.0.1 at 2011-07-21 06:32:35 -0400
+  Processing by PurchasesController#new as HTML
+  Parameters: {"param"=>"1"}
+Completed 500 Internal Server Error in 13ms
+
+NoMethodError (undefined method `name' for "1":String):
+  app/controllers/purchases_controller.rb:28:in `new'
+
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.1ms)
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (12.0ms)
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (19.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-07-21 06:33:21 -0400
+  Processing by HomeController#index as HTML
+  [1m[35mPencil Load (0.5ms)[0m  SELECT "pencils".* FROM "pencils"
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT "books".* FROM "books"[0m
+  [1m[35mMembership Load (0.3ms)[0m  SELECT "memberships".* FROM "memberships"
+Rendered home/index.html.erb within layouts/application (31.7ms)
+Completed 200 OK in 68ms (Views: 37.8ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/purchases/new?param=1" for 127.0.0.1 at 2011-07-21 06:33:22 -0400
+  Processing by PurchasesController#new as HTML
+  Parameters: {"param"=>"1"}
+Completed 500 Internal Server Error in 13ms
+
+NoMethodError (undefined method `name' for "1":String):
+  app/controllers/purchases_controller.rb:29:in `new'
+
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.1ms)
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (12.1ms)
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (19.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-07-21 06:35:01 -0400
+  Processing by HomeController#index as HTML
+  [1m[36mPencil Load (0.5ms)[0m  [1mSELECT "pencils".* FROM "pencils"[0m
+  [1m[35mBook Load (0.2ms)[0m  SELECT "books".* FROM "books"
+  [1m[36mMembership Load (0.3ms)[0m  [1mSELECT "memberships".* FROM "memberships"[0m
+Rendered home/index.html.erb within layouts/application (31.0ms)
+Completed 200 OK in 67ms (Views: 37.2ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/purchases/new?param=Lord+of+the+Rings" for 127.0.0.1 at 2011-07-21 06:35:03 -0400
+  Processing by PurchasesController#new as HTML
+  Parameters: {"param"=>"Lord of the Rings"}
+Rendered purchases/_form.html.erb (12.6ms)
+Rendered purchases/new.html.erb within layouts/application (17.7ms)
+Completed 200 OK in 37ms (Views: 23.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/purchases" for 127.0.0.1 at 2011-07-21 06:35:08 -0400
+  Processing by PurchasesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"47eTltumZWMVhVywhXoEin0pbVvgVEPl5ZdbHMdNkDU=", "purchase"=>{"item_name"=>"Lord of the Rings", "email"=>"matthew.a.kucera@gmail.com"}, "commit"=>"Create Purchase"}
+  [1m[35mAREL (0.4ms)[0m  INSERT INTO "purchases" ("item_name", "email", "created_at", "updated_at") VALUES ('Lord of the Rings', 'matthew.a.kucera@gmail.com', '2011-07-21 10:35:08.542172', '2011-07-21 10:35:08.542172')
+Redirected to http://localhost:3000/purchases/4
+Completed 302 Found in 32ms
+
+
+Started GET "/purchases/4" for 127.0.0.1 at 2011-07-21 06:35:08 -0400
+  Processing by PurchasesController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mPurchase Load (0.2ms)[0m  [1mSELECT "purchases".* FROM "purchases" WHERE "purchases"."id" = 4 LIMIT 1[0m
+Rendered purchases/show.html.erb within layouts/application (14.2ms)
+Completed 200 OK in 35ms (Views: 20.6ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/purchases" for 127.0.0.1 at 2011-07-21 06:35:13 -0400
+  Processing by PurchasesController#index as HTML
+  [1m[35mPurchase Load (0.5ms)[0m  SELECT "purchases".* FROM "purchases"
+Rendered purchases/index.html.erb within layouts/application (16.7ms)
+Completed 200 OK in 34ms (Views: 22.9ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-07-21 06:35:20 -0400
+  Processing by HomeController#index as HTML
+  [1m[36mPencil Load (0.5ms)[0m  [1mSELECT "pencils".* FROM "pencils"[0m
+  [1m[35mBook Load (0.3ms)[0m  SELECT "books".* FROM "books"
+  [1m[36mMembership Load (0.3ms)[0m  [1mSELECT "memberships".* FROM "memberships"[0m
+Rendered home/index.html.erb within layouts/application (31.9ms)
+Completed 200 OK in 106ms (Views: 38.0ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-07-21 06:47:34 -0400
+  Processing by HomeController#index as HTML
+  [1m[35mPencil Load (0.5ms)[0m  SELECT "pencils".* FROM "pencils"
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT "books".* FROM "books"[0m
+  [1m[35mMembership Load (0.3ms)[0m  SELECT "memberships".* FROM "memberships"
+Rendered home/index.html.erb within layouts/application (31.6ms)
+Completed 200 OK in 68ms (Views: 37.7ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/purchases/new?name=Blue+Pencil&type=pencil" for 127.0.0.1 at 2011-07-21 06:47:36 -0400
+  Processing by PurchasesController#new as HTML
+  Parameters: {"name"=>"Blue Pencil", "type"=>"pencil"}
+Rendered purchases/_form.html.erb (12.5ms)
+Rendered purchases/new.html.erb within layouts/application (17.6ms)
+Completed 200 OK in 37ms (Views: 23.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/purchases" for 127.0.0.1 at 2011-07-21 06:49:59 -0400
+  Processing by PurchasesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"47eTltumZWMVhVywhXoEin0pbVvgVEPl5ZdbHMdNkDU=", "purchase"=>{"item_name"=>"Blue Pencil", "email"=>"matthew.a.kucera@gmail.com"}, "commit"=>"Create Purchase"}
+  [1m[36mAREL (0.4ms)[0m  [1mINSERT INTO "purchases" ("item_name", "email", "created_at", "updated_at") VALUES ('Blue Pencil', 'matthew.a.kucera@gmail.com', '2011-07-21 10:49:59.153157', '2011-07-21 10:49:59.153157')[0m
+Redirected to http://localhost:3000/purchases/5
+Completed 302 Found in 69ms
+
+
+Started GET "/purchases/5" for 127.0.0.1 at 2011-07-21 06:49:59 -0400
+  Processing by PurchasesController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[35mPurchase Load (0.2ms)[0m  SELECT "purchases".* FROM "purchases" WHERE "purchases"."id" = 5 LIMIT 1
+Rendered purchases/show.html.erb within layouts/application (13.9ms)
+Completed 200 OK in 34ms (Views: 20.3ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/purchases" for 127.0.0.1 at 2011-07-21 06:50:01 -0400
+  Processing by PurchasesController#index as HTML
+  [1m[36mPurchase Load (0.5ms)[0m  [1mSELECT "purchases".* FROM "purchases"[0m
+Rendered purchases/index.html.erb within layouts/application (17.2ms)
+Completed 200 OK in 34ms (Views: 23.3ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/purchases/2" for 127.0.0.1 at 2011-07-21 06:50:05 -0400
+  Processing by PurchasesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mPurchase Load (0.2ms)[0m  SELECT "purchases".* FROM "purchases" WHERE "purchases"."id" = 2 LIMIT 1
+Rendered purchases/show.html.erb within layouts/application (13.9ms)
+Completed 200 OK in 73ms (Views: 20.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/purchases" for 127.0.0.1 at 2011-07-21 06:50:07 -0400
+  Processing by PurchasesController#index as HTML
+  [1m[36mPurchase Load (0.5ms)[0m  [1mSELECT "purchases".* FROM "purchases"[0m
+Rendered purchases/index.html.erb within layouts/application (17.5ms)
+Completed 200 OK in 35ms (Views: 23.7ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/purchases/3" for 127.0.0.1 at 2011-07-21 06:50:08 -0400
+  Processing by PurchasesController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mPurchase Load (0.2ms)[0m  SELECT "purchases".* FROM "purchases" WHERE "purchases"."id" = 3 LIMIT 1
+Rendered purchases/show.html.erb within layouts/application (13.9ms)
+Completed 200 OK in 35ms (Views: 20.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/purchases" for 127.0.0.1 at 2011-07-21 06:50:09 -0400
+  Processing by PurchasesController#index as HTML
+  [1m[36mPurchase Load (0.5ms)[0m  [1mSELECT "purchases".* FROM "purchases"[0m
+Rendered purchases/index.html.erb within layouts/application (17.6ms)
+Completed 200 OK in 35ms (Views: 24.0ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-07-21 06:59:48 -0400
+  Processing by HomeController#index as HTML
+  [1m[35mPencil Load (0.5ms)[0m  SELECT "pencils".* FROM "pencils"
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT "books".* FROM "books"[0m
+  [1m[35mMembership Load (0.3ms)[0m  SELECT "memberships".* FROM "memberships"
+Rendered home/index.html.erb within layouts/application (31.1ms)
+Completed 200 OK in 68ms (Views: 37.6ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/purchases/new?name=Blue+Pencil&type=pencil" for 127.0.0.1 at 2011-07-21 06:59:50 -0400
+  Processing by PurchasesController#new as HTML
+  Parameters: {"name"=>"Blue Pencil", "type"=>"pencil"}
+Rendered purchases/_form.html.erb (12.6ms)
+Rendered purchases/new.html.erb within layouts/application (18.2ms)
+Completed 200 OK in 38ms (Views: 24.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/purchases" for 127.0.0.1 at 2011-07-21 06:59:56 -0400
+  Processing by PurchasesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"47eTltumZWMVhVywhXoEin0pbVvgVEPl5ZdbHMdNkDU=", "purchase"=>{"item_name"=>"Blue Pencil", "email"=>"matthew.a.kucera@gmail.com"}, "commit"=>"Create Purchase"}
+  [1m[36mAREL (0.4ms)[0m  [1mINSERT INTO "purchases" ("item_name", "email", "created_at", "updated_at") VALUES ('Blue Pencil', 'matthew.a.kucera@gmail.com', '2011-07-21 10:59:56.807648', '2011-07-21 10:59:56.807648')[0m
+Redirected to http://localhost:3000/purchases/6
+Completed 302 Found in 32ms
+
+
+Started GET "/purchases/6" for 127.0.0.1 at 2011-07-21 06:59:56 -0400
+  Processing by PurchasesController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[35mPurchase Load (0.2ms)[0m  SELECT "purchases".* FROM "purchases" WHERE "purchases"."id" = 6 LIMIT 1
+Rendered purchases/show.html.erb within layouts/application (13.9ms)
+Completed 200 OK in 34ms (Views: 20.0ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/purchases" for 127.0.0.1 at 2011-07-21 06:59:59 -0400
+  Processing by PurchasesController#index as HTML
+  [1m[36mPurchase Load (0.5ms)[0m  [1mSELECT "purchases".* FROM "purchases"[0m
+Rendered purchases/index.html.erb within layouts/application (17.6ms)
+Completed 200 OK in 35ms (Views: 23.7ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-07-21 07:02:23 -0400
+  Processing by HomeController#index as HTML
+  [1m[35mPencil Load (0.5ms)[0m  SELECT "pencils".* FROM "pencils"
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT "books".* FROM "books"[0m
+  [1m[35mMembership Load (0.3ms)[0m  SELECT "memberships".* FROM "memberships"
+Rendered home/index.html.erb within layouts/application (31.3ms)
+Completed 200 OK in 107ms (Views: 37.8ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/purchases/new?name=Blue+Pencil&type=pencil" for 127.0.0.1 at 2011-07-21 07:02:25 -0400
+  Processing by PurchasesController#new as HTML
+  Parameters: {"name"=>"Blue Pencil", "type"=>"pencil"}
+Rendered purchases/_form.html.erb (12.3ms)
+Rendered purchases/new.html.erb within layouts/application (17.4ms)
+Completed 200 OK in 37ms (Views: 23.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/purchases" for 127.0.0.1 at 2011-07-21 07:02:28 -0400
+  Processing by PurchasesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"47eTltumZWMVhVywhXoEin0pbVvgVEPl5ZdbHMdNkDU=", "purchase"=>{"item_name"=>"Blue Pencil", "email"=>"matthew.a.kucera@gmail.com"}, "commit"=>"Create Purchase"}
+  [1m[36mAREL (0.4ms)[0m  [1mINSERT INTO "purchases" ("item_name", "email", "created_at", "updated_at") VALUES ('Blue Pencil', 'matthew.a.kucera@gmail.com', '2011-07-21 11:02:29.065512', '2011-07-21 11:02:29.065512')[0m
+Redirected to http://localhost:3000/purchases/7
+Completed 302 Found in 69ms
+
+
+Started GET "/purchases/7" for 127.0.0.1 at 2011-07-21 07:02:29 -0400
+  Processing by PurchasesController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[35mPurchase Load (0.2ms)[0m  SELECT "purchases".* FROM "purchases" WHERE "purchases"."id" = 7 LIMIT 1
+Rendered purchases/show.html.erb within layouts/application (13.7ms)
+Completed 200 OK in 35ms (Views: 20.1ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/purchases" for 127.0.0.1 at 2011-07-21 07:02:31 -0400
+  Processing by PurchasesController#index as HTML
+  [1m[36mPurchase Load (0.6ms)[0m  [1mSELECT "purchases".* FROM "purchases"[0m
+Rendered purchases/index.html.erb within layouts/application (18.8ms)
+Completed 200 OK in 36ms (Views: 25.3ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-07-21 07:03:35 -0400
+  Processing by HomeController#index as HTML
+  [1m[35mPencil Load (0.5ms)[0m  SELECT "pencils".* FROM "pencils"
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT "books".* FROM "books"[0m
+  [1m[35mMembership Load (0.3ms)[0m  SELECT "memberships".* FROM "memberships"
+Rendered home/index.html.erb within layouts/application (30.8ms)
+Completed 200 OK in 68ms (Views: 37.1ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/purchases/new?name=Red+Pencil&type=pencil" for 127.0.0.1 at 2011-07-21 07:03:36 -0400
+  Processing by PurchasesController#new as HTML
+  Parameters: {"name"=>"Red Pencil", "type"=>"pencil"}
+Rendered purchases/_form.html.erb (12.0ms)
+Rendered purchases/new.html.erb within layouts/application (17.1ms)
+Completed 200 OK in 36ms (Views: 23.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/purchases" for 127.0.0.1 at 2011-07-21 07:03:40 -0400
+  Processing by PurchasesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"47eTltumZWMVhVywhXoEin0pbVvgVEPl5ZdbHMdNkDU=", "purchase"=>{"item_name"=>"Red Pencil", "email"=>"matthew.a.kucera@gmail.com"}, "commit"=>"Create Purchase"}
+  [1m[36mAREL (0.4ms)[0m  [1mINSERT INTO "purchases" ("item_name", "email", "created_at", "updated_at") VALUES ('Red Pencil', 'matthew.a.kucera@gmail.com', '2011-07-21 11:03:41.053677', '2011-07-21 11:03:41.053677')[0m
+Redirected to http://localhost:3000/purchases/8
+Completed 302 Found in 33ms
+
+
+Started GET "/purchases/8" for 127.0.0.1 at 2011-07-21 07:03:41 -0400
+  Processing by PurchasesController#show as HTML
+  Parameters: {"id"=>"8"}
+  [1m[35mPurchase Load (0.2ms)[0m  SELECT "purchases".* FROM "purchases" WHERE "purchases"."id" = 8 LIMIT 1
+Rendered purchases/show.html.erb within layouts/application (14.1ms)
+Completed 200 OK in 35ms (Views: 20.3ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/purchases" for 127.0.0.1 at 2011-07-21 07:03:42 -0400
+  Processing by PurchasesController#index as HTML
+  [1m[36mPurchase Load (0.6ms)[0m  [1mSELECT "purchases".* FROM "purchases"[0m
+Rendered purchases/index.html.erb within layouts/application (56.9ms)
+Completed 200 OK in 74ms (Views: 63.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-07-21 07:05:01 -0400
+  Processing by HomeController#index as HTML
+  [1m[35mPencil Load (0.5ms)[0m  SELECT "pencils".* FROM "pencils"
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT "books".* FROM "books"[0m
+  [1m[35mMembership Load (0.3ms)[0m  SELECT "memberships".* FROM "memberships"
+Rendered home/index.html.erb within layouts/application (30.6ms)
+Completed 200 OK in 67ms (Views: 36.7ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/purchases/new?name=Blue+Pencil&type=pencil" for 127.0.0.1 at 2011-07-21 07:05:03 -0400
+  Processing by PurchasesController#new as HTML
+  Parameters: {"name"=>"Blue Pencil", "type"=>"pencil"}
+Rendered purchases/_form.html.erb (12.4ms)
+Rendered purchases/new.html.erb within layouts/application (17.8ms)
+Completed 200 OK in 75ms (Views: 61.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/purchases" for 127.0.0.1 at 2011-07-21 07:05:08 -0400
+  Processing by PurchasesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"47eTltumZWMVhVywhXoEin0pbVvgVEPl5ZdbHMdNkDU=", "purchase"=>{"item_name"=>"Blue Pencil", "email"=>"matthew.a.kucera@gmail.com"}, "commit"=>"Create Purchase"}
+  [1m[36mAREL (0.4ms)[0m  [1mINSERT INTO "purchases" ("item_name", "email", "created_at", "updated_at") VALUES ('Blue Pencil', 'matthew.a.kucera@gmail.com', '2011-07-21 11:05:08.696848', '2011-07-21 11:05:08.696848')[0m
+Redirected to http://localhost:3000/purchases/9
+Completed 302 Found in 32ms
+
+
+Started GET "/purchases/9" for 127.0.0.1 at 2011-07-21 07:05:08 -0400
+  Processing by PurchasesController#show as HTML
+  Parameters: {"id"=>"9"}
+  [1m[35mPurchase Load (0.2ms)[0m  SELECT "purchases".* FROM "purchases" WHERE "purchases"."id" = 9 LIMIT 1
+Rendered purchases/show.html.erb within layouts/application (13.8ms)
+Completed 200 OK in 34ms (Views: 20.0ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/purchases" for 127.0.0.1 at 2011-07-21 07:05:10 -0400
+  Processing by PurchasesController#index as HTML
+  [1m[36mPurchase Load (0.6ms)[0m  [1mSELECT "purchases".* FROM "purchases"[0m
+Rendered purchases/index.html.erb within layouts/application (21.0ms)
+Completed 200 OK in 38ms (Views: 27.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-07-21 07:08:32 -0400
+  Processing by HomeController#index as HTML
+  [1m[35mPencil Load (0.5ms)[0m  SELECT "pencils".* FROM "pencils"
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT "books".* FROM "books"[0m
+  [1m[35mMembership Load (0.2ms)[0m  SELECT "memberships".* FROM "memberships"
+Rendered home/index.html.erb within layouts/application (30.5ms)
+Completed 200 OK in 67ms (Views: 36.7ms | ActiveRecord: 1.0ms)
