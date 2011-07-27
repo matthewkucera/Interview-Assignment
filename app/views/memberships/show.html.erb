@@ -1,30 +1,9 @@
-<p id="notice"><%= notice %></p>
-
+<h2><%= @membership.name %></h2>
+<p>Membership Type: <%=@membership.membership_type%></p>
+<h4><%= number_to_currency(@membership.price) %><h4>
+<%= image_tag @membership.image_path, :alt => @membership.name %>
 <p>
-  <b>Name:</b>
-  <%= @membership.name %>
-</p>
-
-<p>
-  <b>Price:</b>
-  <%= @membership.price %>
-</p>
-
-<p>
-  <b>Image path:</b>
-  <%= @membership.image_path %>
-</p>
-
-<p>
-  <b>Description:</b>
   <%= @membership.description %>
 </p>
 
-<p>
-  <b>Membership type:</b>
-  <%= @membership.membership_type %>
-</p>
-
-
-<%= link_to 'Edit', edit_membership_path(@membership) %> |
-<%= link_to 'Back', memberships_path %>
+<%= link_to 'Home', root_url %>

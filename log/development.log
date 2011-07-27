@@ -2960,3 +2960,69 @@ Started GET "/" for 127.0.0.1 at 2011-07-26 22:55:40 -0400
   [1m[35mItem Load (3.9ms)[0m  SELECT "items".* FROM "items"
 Rendered home/index.html.erb within layouts/application (113.3ms)
 Completed 200 OK in 158ms (Views: 119.4ms | ActiveRecord: 3.9ms)
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from service at /usr/local/lib/ruby/1.9.1/webrick/httpserver.rb:111)
+
+
+Started GET "/" for 127.0.0.1 at 2011-07-26 23:32:14 -0400
+  Processing by HomeController#index as HTML
+  [1m[36mItem Load (4.0ms)[0m  [1mSELECT "items".* FROM "items"[0m
+Rendered home/index.html.erb within layouts/application (117.7ms)
+Completed 200 OK in 234ms (Views: 123.9ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/memberships/8" for 127.0.0.1 at 2011-07-26 23:32:18 -0400
+  Processing by MembershipsController#show as HTML
+  Parameters: {"id"=>"8"}
+  [1m[35mSQL (0.3ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mMembership Load (0.6ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."type" = 'Membership' AND "items"."id" = 8 LIMIT 1[0m
+Rendered memberships/show.html.erb within layouts/application (17.4ms)
+Completed 200 OK in 91ms (Views: 24.1ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/books/2" for 127.0.0.1 at 2011-07-26 23:32:27 -0400
+  Processing by BooksController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mBook Load (0.8ms)[0m  SELECT "items".* FROM "items" WHERE "items"."type" = 'Book' AND "items"."id" = 2 LIMIT 1
+Rendered books/show.html.erb within layouts/application (18.0ms)
+Completed 200 OK in 55ms (Views: 24.1ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-07-26 23:33:55 -0400
+  Processing by HomeController#index as HTML
+  [1m[36mItem Load (3.9ms)[0m  [1mSELECT "items".* FROM "items"[0m
+Rendered home/index.html.erb within layouts/application (114.5ms)
+Completed 200 OK in 159ms (Views: 120.6ms | ActiveRecord: 3.9ms)
+
+
+Started GET "/blankets/5" for 127.0.0.1 at 2011-07-26 23:33:59 -0400
+  Processing by BlanketsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[35mBlanket Load (0.7ms)[0m  SELECT "items".* FROM "items" WHERE "items"."type" = 'Blanket' AND "items"."id" = 5 LIMIT 1
+Rendered blankets/show.html.erb within layouts/application (17.2ms)
+Completed 200 OK in 53ms (Views: 23.8ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/blankets/5" for 127.0.0.1 at 2011-07-26 23:34:22 -0400
+  Processing by BlanketsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mBlanket Load (0.7ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."type" = 'Blanket' AND "items"."id" = 5 LIMIT 1[0m
+Rendered blankets/show.html.erb within layouts/application (17.5ms)
+Completed 200 OK in 91ms (Views: 23.6ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/memberships/8" for 127.0.0.1 at 2011-07-26 23:34:28 -0400
+  Processing by MembershipsController#show as HTML
+  Parameters: {"id"=>"8"}
+  [1m[35mMembership Load (0.7ms)[0m  SELECT "items".* FROM "items" WHERE "items"."type" = 'Membership' AND "items"."id" = 8 LIMIT 1
+Rendered memberships/show.html.erb within layouts/application (17.0ms)
+Completed 200 OK in 53ms (Views: 23.1ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/books/2" for 127.0.0.1 at 2011-07-26 23:34:33 -0400
+  Processing by BooksController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mBook Load (0.7ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."type" = 'Book' AND "items"."id" = 2 LIMIT 1[0m
+Rendered books/show.html.erb within layouts/application (17.4ms)
+Completed 200 OK in 54ms (Views: 23.5ms | ActiveRecord: 0.7ms)
