@@ -16,6 +16,20 @@ Store::Application.configure do
 
   # Don't care if the mailer can't send
   config.action_mailer.raise_delivery_errors = false
+  
+  # set delivery method to :smtp, :sendmail or :test
+config.action_mailer.delivery_method = :test
+
+# these options are only needed if you choose smtp delivery
+# didn't want to keep my email info in the project
+config.action_mailer.smtp_settings = {
+  :address        => 'smtp.gmail.com',
+  :port           => 587,
+  :domain         => 'www.example.com',
+  :authentication => :login,
+  :user_name      => '...@gmail.com',
+  :password       => '...'
+}
 
   # Print deprecation notices to the Rails logger
   config.active_support.deprecation = :log

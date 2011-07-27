@@ -1,15 +1,6 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <b>Email:</b>
-  <%= @purchase.email %>
-</p>
-
-<p>
-  <b>Address:</b>
-  <%= @purchase.address %>
-</p>
+<h1>Your order is on it's way</h1>
+<p><%= @purchase.email %><p>
+<p><%= @purchase.address %></p>
 
 
-<%= link_to 'Edit', edit_purchase_path(@purchase) %> |
-<%= link_to 'Back', purchases_path %>
+<%= link_to 'Home', root_url %>
