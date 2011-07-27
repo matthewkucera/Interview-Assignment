@@ -1,0 +1,2 @@
+class Blanket < Item
+end

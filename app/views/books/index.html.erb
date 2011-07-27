@@ -3,6 +3,10 @@
 <table>
   <tr>
     <th>Name</th>
+    <th>Author</th>
+    <th>Price</th>
+    <th>Image path</th>
+    <th>Description</th>
     <th></th>
     <th></th>
     <th></th>
@@ -11,6 +15,10 @@
 <% @books.each do |book| %>
   <tr>
     <td><%= book.name %></td>
+    <td><%= book.author %></td>
+    <td><%= book.price %></td>
+    <td><%= book.image_path %></td>
+    <td><%= book.description %></td>
     <td><%= link_to 'Show', book %></td>
     <td><%= link_to 'Edit', edit_book_path(book) %></td>
     <td><%= link_to 'Destroy', book, :confirm => 'Are you sure?', :method => :delete %></td>

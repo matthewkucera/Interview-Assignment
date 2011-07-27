@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @blanket.name %>
+</p>
+
+<p>
+  <b>Price:</b>
+  <%= @blanket.price %>
+</p>
+
+<p>
+  <b>Image path:</b>
+  <%= @blanket.image_path %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @blanket.description %>
+</p>
+
+<p>
+  <b>Material:</b>
+  <%= @blanket.material %>
+</p>
+
+
+<%= link_to 'Edit', edit_blanket_path(@blanket) %> |
+<%= link_to 'Back', blankets_path %>

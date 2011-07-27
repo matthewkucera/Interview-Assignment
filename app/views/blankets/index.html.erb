@@ -1,0 +1,32 @@
+<h1>Listing blankets</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Price</th>
+    <th>Image path</th>
+    <th>Description</th>
+    <th>Material</th>
+    <th>Type</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @blankets.each do |blanket| %>
+  <tr>
+    <td><%= blanket.name %></td>
+    <td><%= blanket.price %></td>
+    <td><%= blanket.image_path %></td>
+    <td><%= blanket.description %></td>
+    <td><%= blanket.material %></td>
+    <td><%= link_to 'Show', blanket %></td>
+    <td><%= link_to 'Edit', edit_blanket_path(blanket) %></td>
+    <td><%= link_to 'Destroy', blanket, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Blanket', new_blanket_path %>

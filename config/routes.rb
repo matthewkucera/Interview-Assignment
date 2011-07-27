@@ -1,11 +1,11 @@
-InterviewAssignment::Application.routes.draw do
-  resources :purchases
-
+Store::Application.routes.draw do
   resources :memberships
+
+  resources :blankets
 
   resources :books
 
-  resources :pencils
+  resources :items
 
   get "home/index"
 

@@ -5,6 +5,26 @@
   <%= @membership.name %>
 </p>
 
+<p>
+  <b>Price:</b>
+  <%= @membership.price %>
+</p>
+
+<p>
+  <b>Image path:</b>
+  <%= @membership.image_path %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @membership.description %>
+</p>
+
+<p>
+  <b>Membership type:</b>
+  <%= @membership.membership_type %>
+</p>
+
 
 <%= link_to 'Edit', edit_membership_path(@membership) %> |
 <%= link_to 'Back', memberships_path %>

@@ -3,6 +3,11 @@
 <table>
   <tr>
     <th>Name</th>
+    <th>Price</th>
+    <th>Image path</th>
+    <th>Description</th>
+    <th>Material</th>
+    <th>Membership type</th>
     <th></th>
     <th></th>
     <th></th>
@@ -11,6 +16,10 @@
 <% @memberships.each do |membership| %>
   <tr>
     <td><%= membership.name %></td>
+    <td><%= membership.price %></td>
+    <td><%= membership.image_path %></td>
+    <td><%= membership.description %></td>
+    <td><%= membership.membership_type %></td>
     <td><%= link_to 'Show', membership %></td>
     <td><%= link_to 'Edit', edit_membership_path(membership) %></td>
     <td><%= link_to 'Destroy', membership, :confirm => 'Are you sure?', :method => :delete %></td>
