@@ -6,4 +6,5 @@
   <%= @membership.description %>
 </p>
 
+<%= link_to 'Purchase', new_purchase_path(:item_id => @membership.id)%></br>
 <%= link_to 'Home', root_url %>

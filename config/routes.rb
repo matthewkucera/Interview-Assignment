@@ -1,4 +1,6 @@
 Store::Application.routes.draw do
+  resources :purchases
+
   resources :memberships
 
   resources :blankets

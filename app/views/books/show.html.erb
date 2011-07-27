@@ -6,5 +6,5 @@
   <%= @book.description %>
 </p>
 
-<%= link_to 'Test', "../home/index"%>
+<%= link_to 'Purchase', new_purchase_path(:item_id => @book.id)%></br>
 <%= link_to 'Home', root_url %>

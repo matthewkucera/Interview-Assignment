@@ -1,0 +1,8 @@
+<h2>Thank you for your purchase!</h2>
+<h4><%= @item.name %></h4>
+<p><%= number_to_currency(@item.price)%></p>
+<p>Please fill out the following information</p>
+
+<%= render 'form' %>
+
+<%= link_to 'Back', purchases_path %>

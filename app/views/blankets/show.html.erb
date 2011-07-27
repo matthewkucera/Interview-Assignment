@@ -6,4 +6,5 @@
   <%= @blanket.description %>
 </p>
 
+<%= link_to 'Purchase', new_purchase_path(:item_id => @blanket.id)%></br>
 <%= link_to 'Home', root_url %>

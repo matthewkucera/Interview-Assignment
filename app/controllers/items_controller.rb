@@ -80,4 +80,13 @@ class ItemsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  def submit_order_form
+    if request.post?
+      #OrderMailer.deliver_message_from_visitor(params[:email], params[:message])
+      #flash[:notice] = "Message sent OK!" # notify successful send
+      redirect_to :action => '../home/index' # or wherever you wanna go
+    end
+  end
+
 end
